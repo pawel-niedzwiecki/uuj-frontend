@@ -3,8 +3,12 @@ import styled from "styled-components";
 import { MainSettingsTemplate } from "types/types.mainSettingsTemplate";
 
 export const Header = styled.header`
+  top: 0;
+  left: 0;
   width: 100%;
-  position: relative;
+  display: block;
+  position: fixed;
+  z-index: 9999999;
   padding-top: ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.small};
   background: ${({ theme }: { theme: MainSettingsTemplate }) => theme.colorSecoundBg};
 
@@ -89,7 +93,6 @@ export const BoxContact = styled.a`
 
   @media all and (min-width: 768px) {
     border-right: 0;
-    border-bottom: 0.3rem solid #fff;
   }
 
   &:hover {
