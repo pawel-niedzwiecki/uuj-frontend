@@ -13,11 +13,17 @@ export const Input: StyledComponent<any, any> = styled.input<InputStyledInterfac
   width: 100%;
   border: none;
   max-width: 100%;
+  border-radius: 0;
   position: relative;
+  -webkit-appearance: none;
   padding: ${({ theme }: ThemeProps<MainSettingsTemplate>): string => theme.break.small};
   color: ${({ theme }: ThemeProps<MainSettingsTemplate>): string => theme.colorTextPrimmary};
   background: ${({ theme, error }: { theme: MainSettingsTemplate; error: boolean }): string => (error ? theme.colorDangerBg : theme.colorPrimmaryBg)};
   border: 2px solid ${({ theme, error }: { theme: MainSettingsTemplate; error: boolean }): string => (error ? theme.colorDangerBorder : theme.colorBorder)};
+
+  &[type="search"] {
+    -webkit-appearance: none;
+  }
 
   &::-webkit-contacts-auto-fill-button {
     visibility: hidden;
