@@ -15,7 +15,7 @@ import { Section, Box, Header, Text, UnitText } from "./component.section.slider
 export default function ComponentSliderWithService() {
   return (
     <Section>
-      <Carousel showArrows={true} showThumbs={false} autoPlay={true} infiniteLoop={true} interval={4000} showStatus={false} showIndicators={false}>
+      <Carousel showArrows={true} showThumbs={false} autoPlay={true} infiniteLoop={true} showStatus={false} showIndicators={false}>
         <Box>
           <Container>
             <Row>

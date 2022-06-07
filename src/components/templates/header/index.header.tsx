@@ -17,12 +17,12 @@ const HeaderComponent = () => {
 
     const switchMenu = (e: Event) => {
       const st = window.pageYOffset || document.documentElement.scrollTop;
-      if (st > lastScrollTop && st > 100) {
+      if (st > lastScrollTop && st > 150) {
         clearTimeout(saveSwitchMenu);
-        saveSwitchMenu = setTimeout(() => menuContactShow && setMenuContactShow(false), 50);
+        saveSwitchMenu = setTimeout(() => menuContactShow && setMenuContactShow(false), 10);
       } else {
         clearTimeout(saveSwitchMenu);
-        saveSwitchMenu = setTimeout(() => !menuContactShow && setMenuContactShow(true), 50);
+        saveSwitchMenu = setTimeout(() => !menuContactShow && setMenuContactShow(true), 10);
       }
       lastScrollTop = st <= 0 ? 0 : st;
     };
