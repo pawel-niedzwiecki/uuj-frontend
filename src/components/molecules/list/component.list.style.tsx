@@ -8,10 +8,17 @@ interface ListyType {
 
 export const List = styled.ul<ListyType>`
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  position: relative;
 
   li {
-    padding: ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.main};
+    &:first-child {
+      padding-top: 0;
+    }
+    &:last-child {
+      padding-bottom: 0;
+    }
+    padding: ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.main} 0;
     width: ${({ type }) => (type === ListTypeEnum.vertical ? "100%" : "max-content")};
   }
 `;

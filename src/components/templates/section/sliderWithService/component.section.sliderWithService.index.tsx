@@ -7,67 +7,65 @@ import Medal from "assets/icon/medal.svg";
 import Tireflat from "assets/icon/tireflat.svg";
 import Truck from "assets/icon/truck.svg";
 import Wheelchair from "assets/icon/wheelchair.svg";
-import ComponentList, { ListTypeEnum } from "components/molecules/list/component.list.index";
 import { Container, Row, Col } from "components/orgamis/flexboxgrid/index.flexboxgrid";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import ComponentList, { ListTypeEnum } from "components/molecules/list/component.list.index";
 
-import { Section, Box, Header, Text } from "./component.section.sliderWithService.style";
+import { Section, Box, Header, Text, UnitText } from "./component.section.sliderWithService.style";
 
 export default function ComponentSliderWithService() {
   return (
     <Section>
-      <Carousel>
+      <Carousel showArrows={true} showThumbs={false} autoPlay={true} infiniteLoop={true} interval={4000} showStatus={false} showIndicators={false}>
         <Box>
           <Container>
             <Row>
               <Col xs={12} className="col">
                 <Header>Pomoc Drogowa 1</Header>
               </Col>
-              <Col xs={6}>
+              <Col xs={12} md={6} className="col">
                 <ComponentList
                   type={ListTypeEnum.vertical}
                   items={[
                     <>
                       <Text>
-                        <Clock /> Średni czas dojazdu do klienta do 1 sekunda
+                        <Clock /> <span>Średni czas dojazdu do klienta do 1 sekunda</span>
                       </Text>
                     </>,
                     <>
                       <Text>
-                        <Gas /> Średni czas dojazdu do klienta do 1 sekunda
+                        <Gas /> <span> Średni czas dojazdu do klienta do 1 sekunda</span>
                       </Text>
                     </>,
                     <>
                       <Text>
-                        <Key /> Średni czas dojazdu do klienta do 1 sekunda
+                        <Key /> <span>Średni czas dojazdu do klienta do 1 sekunda</span>
                       </Text>
                     </>,
                     <>
                       <Text>
-                        <Tireflat /> Średni czas dojazdu do klienta do 1 sekunda
+                        <Tireflat /> <span>Średni czas dojazdu do klienta do 1 sekunda</span>
                       </Text>
                     </>,
                     <>
                       <Text>
-                        <Truck /> Średni czas dojazdu do klienta do 1 sekunda
+                        <Truck /> <span>Średni czas dojazdu do klienta do 1 sekunda</span>
                       </Text>
                     </>,
                   ]}
                 />
               </Col>
-              <Col xs={6}>
-                <Text>
+              <Col xs={12} md={6} className="col">
+                <UnitText>
                   <strong>Ratownictwo drogowe UUJ</strong> prowadzi działalność związaną z pomocą drogową. Oferujemy kierowcom pomoc na drodze podczas awarii, wypadku lub kolizji. Mamy ogromne doświadczenie, które procentuje podczas wykonywania powierzonych nam zadań. Jako{" "}
                   <strong>pomoc drogowa</strong> w szczególności obsługujemy <strong>Gorzów Wielkopolski</strong>. Stale patrolujemy drogę ekspresową <strong>S3</strong> na odcinku Świebodzin, Myślibórz oraz autostradę <strong>A2</strong> na odcinku <strong>Świecko</strong>, Torzym, Nowy Tomyśl. W
                   swojej ofercie posiadamy usługę <strong>tanie holowanie</strong> oraz <strong>tania laweta</strong>. Do dyspozycji mamy <strong>dźwig grove do 35t</strong> oraz <strong>ładowarkę JCB</strong>. Jesteśmy rzetelną firmą z wieloletnim doświadczeniem na rynku.
                   <strong>Prowadzimy współpracę z Policją</strong>, okolicznymi gminami, Starostwem Powiatowym czy też Sądem Rejonowym. Mamy do dyspozycji <strong>potężny, strzeżony 24h/dobę parking</strong> z możliwością podłączenia się do WiFi, telewizją oraz zapleczem sanitarnym.
-                </Text>
+                </UnitText>
               </Col>
             </Row>
           </Container>
         </Box>
         <Box>kupa2</Box>
-        <Box>kupa3</Box>
       </Carousel>
     </Section>
   );
