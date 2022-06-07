@@ -19,6 +19,14 @@ export const Input: StyledComponent<any, any> = styled.input<InputStyledInterfac
   background: ${({ theme, error }: { theme: MainSettingsTemplate; error: boolean }): string => (error ? theme.colorDangerBg : theme.colorPrimmaryBg)};
   border: 2px solid ${({ theme, error }: { theme: MainSettingsTemplate; error: boolean }): string => (error ? theme.colorDangerBorder : theme.colorBorder)};
 
+  input::-webkit-contacts-auto-fill-button {
+    visibility: hidden;
+    display: none !important;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+  }
+
   &:focus {
     outline: none;
   }
