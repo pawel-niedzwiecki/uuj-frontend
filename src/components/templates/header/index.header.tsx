@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useForm } from "react-hook-form";
+import { DisplayMenuType } from "database/menu";
 import React, { useState, useEffect } from "react";
 import { Header, Form, Menu, MenuItem, BoxContact, Hambuger } from "./index.header.style";
 import { Input, InputTypeEnum } from "components/molecules/form/component.form.index";
@@ -7,7 +8,7 @@ import { Container, Row, Col } from "components/orgamis/flexboxgrid/index.flexbo
 
 import Logo from "assets/icon/logo.svg";
 
-const HeaderComponent = () => {
+const HeaderComponent = ({ data }: { data: { menu: DisplayMenuType } }) => {
   const [menuPower, setMenuPower] = useState(false);
   const [menuContactShow, setMenuContactShow] = useState(true);
 
@@ -61,27 +62,24 @@ const HeaderComponent = () => {
                 <span></span>
                 <span></span>
               </Hambuger>
+
               <Menu menuPower={menuPower}>
-                <MenuItem>
-                  <Link href="/">
-                    <a>Usługi</a>
-                  </Link>
-                </MenuItem>
-                <MenuItem>
-                  <Link href="/">
-                    <a>Poradniki</a>
-                  </Link>
-                </MenuItem>
-                <MenuItem>
-                  <Link href="/">
-                    <a>Wiadomosći</a>
-                  </Link>
-                </MenuItem>
-                <MenuItem>
-                  <Link href="/">
-                    <a>Kontakt</a>
-                  </Link>
-                </MenuItem>
+                {data.menu.data?.menu.items.map((item) => {
+                  console.log(item);
+                  return (
+                    <MenuItem key={item.id}>
+                      <Link href={item.url}>
+                        {item.target ? (
+                          <a target={item.target} title={item.title}>
+                            {item.title}
+                          </a>
+                        ) : (
+                          <a title={item.title}>{item.title}</a>
+                        )}
+                      </Link>
+                    </MenuItem>
+                  );
+                })}
               </Menu>
             </Col>
             <Col xs={12} className="col">

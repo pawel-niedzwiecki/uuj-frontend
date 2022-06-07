@@ -7,9 +7,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ProviderWrapper>
       <GlobalStyle />
-      <Laout>
-        <Component {...pageProps} />
-      </Laout>
+      <Component {...pageProps} />
     </ProviderWrapper>
   );
 }
