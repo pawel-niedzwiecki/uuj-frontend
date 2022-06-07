@@ -13,7 +13,7 @@ export const Header = styled.header`
   background: ${({ theme }: { theme: MainSettingsTemplate }) => theme.colorSecoundBg};
 
   .brand {
-    display: flex;
+    display: block;
     min-width: 9.5rem;
     position: relative;
     align-items: center;
