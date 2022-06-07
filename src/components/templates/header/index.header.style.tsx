@@ -81,15 +81,20 @@ export const MenuItem = styled.li`
   }
 `;
 
-export const BoxContact = styled.a`
+interface BoxContactType {
+  power: boolean;
+}
+
+export const BoxContact = styled.a<BoxContactType>`
   width: 100%;
-  display: flex;
+
   font-size: 2rem;
   padding: 1.5rem;
   font-weight: bold;
   justify-content: center;
   border: 0.3rem solid #fff;
   border-bottom: 0 solid #fff;
+  display: ${({ power }) => (power ? "flex" : "none")};
 
   @media all and (min-width: 768px) {
     border-right: 0;
