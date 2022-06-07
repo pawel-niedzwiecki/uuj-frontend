@@ -12,6 +12,7 @@ export const Label: StyledComponent<any, any> = styled.label`
 export const Input: StyledComponent<any, any> = styled.input<InputStyledInterface>`
   width: 100%;
   border: none;
+  height: 4rem;
   max-width: 100%;
   border-radius: 0;
   position: relative;
