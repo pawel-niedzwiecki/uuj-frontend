@@ -1,5 +1,4 @@
 import { displayMenu, displayMenuState } from "database/menu";
-import { json } from "stream/consumers";
 
 export default async function ArticleShortAPI(req: any, res: any): Promise<void> {
   const { get } = req.query;

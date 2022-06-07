@@ -65,7 +65,6 @@ const HeaderComponent = ({ data }: { data: { menu: DisplayMenuType } }) => {
 
               <Menu menuPower={menuPower}>
                 {data.menu.data?.menu.items.map((item) => {
-                  console.log(item);
                   return (
                     <MenuItem key={item.id}>
                       <Link href={item.url}>
