@@ -5,7 +5,11 @@ import { displayHomeOnBackEnd, DisplayHomeType } from "database/pages/home";
 import { displayContactOnBackEnd, DisplayContactType } from "database/pages/contact";
 
 function Home({ menuHeader, contactHeader, dataPageHome }: { menuHeader: DisplayMenuType; contactHeader: DisplayContactType; dataPageHome: DisplayHomeType }) {
-  return <Laout data={{ header: { menu: menuHeader, contact: contactHeader } }}>{<ComponentSliderWithService data={{ slider: dataPageHome?.data?.attributes?.slider }} />}</Laout>;
+  return (
+    <Laout data={{ header: { menu: menuHeader, contact: contactHeader } }}>
+      <ComponentSliderWithService data={{ slider: dataPageHome?.data?.attributes?.slider }} />
+    </Laout>
+  );
 }
 
 export async function getStaticProps() {
