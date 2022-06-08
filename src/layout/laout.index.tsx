@@ -1,5 +1,5 @@
 import { DisplayMenuType } from "database/menu";
-import { DisplayContactType } from "database/contact";
+import { DisplayContactType } from "database/pages/contact";
 import Header from "components/templates/header/index.header";
 import Footer from "components/templates/footer/index.footer";
 

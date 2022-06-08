@@ -7,65 +7,58 @@ import Medal from "assets/icon/medal.svg";
 import Tireflat from "assets/icon/tireflat.svg";
 import Truck from "assets/icon/truck.svg";
 import Wheelchair from "assets/icon/wheelchair.svg";
+import { Advantage, Slide, Slider } from "database/pages/home";
+import ReactMarkdown from "react-markdown";
 import { Container, Row, Col } from "components/orgamis/flexboxgrid/index.flexboxgrid";
 import ComponentList, { ListTypeEnum } from "components/molecules/list/component.list.index";
 
 import { Section, Box, Header, Text, UnitText } from "./component.section.sliderWithService.style";
 
-export default function ComponentSliderWithService() {
+export default function ComponentSliderWithService({ data }: { data: { slider: Slider } }) {
+  console.log(data.slider);
   return (
     <Section>
       <Carousel showArrows={true} showThumbs={false} autoPlay={true} infiniteLoop={true} showStatus={false} showIndicators={false}>
-        <Box>
-          <Container>
-            <Row>
-              <Col xs={12} className="col">
-                <Header>Pomoc Drogowa 1</Header>
-              </Col>
-              <Col xs={12} md={6} className="col">
-                <ComponentList
-                  type={ListTypeEnum.vertical}
-                  items={[
-                    <>
-                      <Text>
-                        <Clock /> <span>Średni czas dojazdu do klienta do 1 sekunda</span>
-                      </Text>
-                    </>,
-                    <>
-                      <Text>
-                        <Gas /> <span> Średni czas dojazdu do klienta do 1 sekunda</span>
-                      </Text>
-                    </>,
-                    <>
-                      <Text>
-                        <Key /> <span>Średni czas dojazdu do klienta do 1 sekunda</span>
-                      </Text>
-                    </>,
-                    <>
-                      <Text>
-                        <Tireflat /> <span>Średni czas dojazdu do klienta do 1 sekunda</span>
-                      </Text>
-                    </>,
-                    <>
-                      <Text>
-                        <Truck /> <span>Średni czas dojazdu do klienta do 1 sekunda</span>
-                      </Text>
-                    </>,
-                  ]}
-                />
-              </Col>
-              <Col xs={12} md={6} className="col">
-                <UnitText>
-                  <strong>Ratownictwo drogowe UUJ</strong> prowadzi działalność związaną z pomocą drogową. Oferujemy kierowcom pomoc na drodze podczas awarii, wypadku lub kolizji. Mamy ogromne doświadczenie, które procentuje podczas wykonywania powierzonych nam zadań. Jako{" "}
-                  <strong>pomoc drogowa</strong> w szczególności obsługujemy <strong>Gorzów Wielkopolski</strong>. Stale patrolujemy drogę ekspresową <strong>S3</strong> na odcinku Świebodzin, Myślibórz oraz autostradę <strong>A2</strong> na odcinku <strong>Świecko</strong>, Torzym, Nowy Tomyśl. W
-                  swojej ofercie posiadamy usługę <strong>tanie holowanie</strong> oraz <strong>tania laweta</strong>. Do dyspozycji mamy <strong>dźwig grove do 35t</strong> oraz <strong>ładowarkę JCB</strong>. Jesteśmy rzetelną firmą z wieloletnim doświadczeniem na rynku.
-                  <strong>Prowadzimy współpracę z Policją</strong>, okolicznymi gminami, Starostwem Powiatowym czy też Sądem Rejonowym. Mamy do dyspozycji <strong>potężny, strzeżony 24h/dobę parking</strong> z możliwością podłączenia się do WiFi, telewizją oraz zapleczem sanitarnym.
-                </UnitText>
-              </Col>
-            </Row>
-          </Container>
-        </Box>
-        <Box>kupa2</Box>
+        {data.slider?.data?.map((item: Slide, i: number): JSX.Element => {
+          return (
+            <Box key={i}>
+              <Container>
+                <Row>
+                  <Col xs={12} className="col">
+                    <Header>{item.attributes.title}</Header>
+                  </Col>
+                  <Col xs={12} md={6} className="col">
+                    <ComponentList type={ListTypeEnum.vertical}>
+                      {item.attributes.Advantages.map((advantage: Advantage, i: number) => {
+                        return (
+                          <li key={i}>
+                            <Text>
+                              {advantage.icon === "clock" && <Clock />}
+                              {advantage.icon === "gas" && <Gas />}
+                              {advantage.icon === "key" && <Key />}
+                              {advantage.icon === "medal" && <Medal />}
+                              {advantage.icon === "tireflat" && <Tireflat />}
+                              {advantage.icon === "truck" && <Truck />}
+                              {advantage.icon === "wheelchair" && <Wheelchair />}
+                              <span>
+                                <ReactMarkdown>{advantage.content}</ReactMarkdown>
+                              </span>
+                            </Text>
+                          </li>
+                        );
+                      })}
+                    </ComponentList>
+                  </Col>
+                  <Col xs={12} md={6} className="col">
+                    <UnitText>
+                      <ReactMarkdown>{item.attributes.quote}</ReactMarkdown>
+                    </UnitText>
+                  </Col>
+                </Row>
+              </Container>
+            </Box>
+          );
+        })}
       </Carousel>
     </Section>
   );

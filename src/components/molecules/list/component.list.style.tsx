@@ -22,5 +22,3 @@ export const List = styled.ul<ListyType>`
     width: ${({ type }) => (type === ListTypeEnum.vertical ? "100%" : "max-content")};
   }
 `;
-
-export const Item = styled.li``;

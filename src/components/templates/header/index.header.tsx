@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { DisplayMenuType } from "database/menu";
 import React, { useState, useEffect } from "react";
-import { DisplayContactType } from "database/contact";
+import { DisplayContactType } from "database/pages/contact";
 import { Header, Form, Menu, MenuItem, BoxContact, Hambuger } from "./index.header.style";
 import { SearchEngine } from "components/orgamis/form/component.form.index";
 import { Container, Row, Col } from "components/orgamis/flexboxgrid/index.flexboxgrid";
