@@ -7,7 +7,7 @@ import { displayContactOnBackEnd, DisplayContactType } from "database/pages/cont
 function Home({ menuHeader, contactHeader, dataPageHome }: { menuHeader: DisplayMenuType; contactHeader: DisplayContactType; dataPageHome: DisplayHomeType }) {
   return (
     <Laout data={{ header: { menu: menuHeader, contact: contactHeader } }}>
-      <ComponentSliderWithService data={{ slider: dataPageHome.data?.attributes.slider }} />
+      <ComponentSliderWithService data={{ slider: dataPageHome?.data?.attributes?.slider }} />
     </Laout>
   );
 }

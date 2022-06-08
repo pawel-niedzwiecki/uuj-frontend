@@ -22,7 +22,7 @@ export type Slide = {
     what_we_can_for_you_made: string;
     createdAt: Date;
     updatedAt: Date;
-    Advantages: Advantage[];
+    Advantages: Advantage[] | undefined;
   };
 };
 
