@@ -10,7 +10,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@strapi/plugin-documentation": "^4.1.12",
     "axios": "^0.27.2",
     "lodash": "^4.17.21",
     "next": "12.1.6",
