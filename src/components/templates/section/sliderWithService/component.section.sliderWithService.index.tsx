@@ -1,14 +1,15 @@
-import React from "react";
-import { Carousel } from "react-responsive-carousel";
-import Clock from "assets/icon/clock.svg";
 import Gas from "assets/icon/gas.svg";
 import Key from "assets/icon/key.svg";
+import Clock from "assets/icon/clock.svg";
 import Medal from "assets/icon/medal.svg";
-import Tireflat from "assets/icon/tireflat.svg";
 import Truck from "assets/icon/truck.svg";
+import Tireflat from "assets/icon/tireflat.svg";
+
+import React from "react";
+import ReactMarkdown from "react-markdown";
+import { Carousel } from "react-responsive-carousel";
 import Wheelchair from "assets/icon/wheelchair.svg";
 import { Advantage, Slide, Slider } from "database/pages/home";
-import ReactMarkdown from "react-markdown";
 import { Container, Row, Col } from "components/orgamis/flexboxgrid/index.flexboxgrid";
 import ComponentList, { ListTypeEnum } from "components/molecules/list/component.list.index";
 
