@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { DisplayMenuType } from "database/menu";
 import React, { useState, useEffect } from "react";
 import { Header, Form, Menu, MenuItem, BoxContact, Hambuger } from "./index.header.style";
-import { Input, InputTypeEnum } from "components/molecules/form/component.form.index";
+import { SearchEngine } from "components/orgamis/form/component.form.index";
 import { Container, Row, Col } from "components/orgamis/flexboxgrid/index.flexboxgrid";
 
 import Logo from "assets/icon/logo.svg";
@@ -20,10 +20,10 @@ const HeaderComponent = ({ data }: { data: { menu: DisplayMenuType } }) => {
       const st = window.pageYOffset || document.documentElement.scrollTop;
       if (st > lastScrollTop && st > 150) {
         clearTimeout(saveSwitchMenu);
-        saveSwitchMenu = setTimeout(() => menuContactShow && setMenuContactShow(false), 10);
+        saveSwitchMenu = setTimeout(() => menuContactShow && setMenuContactShow(false), 150);
       } else {
         clearTimeout(saveSwitchMenu);
-        saveSwitchMenu = setTimeout(() => !menuContactShow && setMenuContactShow(true), 10);
+        saveSwitchMenu = setTimeout(() => !menuContactShow && setMenuContactShow(true), 150);
       }
       lastScrollTop = st <= 0 ? 0 : st;
     };
@@ -55,7 +55,7 @@ const HeaderComponent = ({ data }: { data: { menu: DisplayMenuType } }) => {
                   console.log(search);
                 })}
               >
-                <Input type={InputTypeEnum.search} id="search" name="search" error={errors.identifier} placeholder="Szukaj..." register={register} required />
+                <SearchEngine id="search" name="search" error={errors.identifier} placeholder="Szukaj..." register={register} required />
               </Form>
               <Hambuger onClick={() => setMenuPower(!menuPower)}>
                 <span></span>
