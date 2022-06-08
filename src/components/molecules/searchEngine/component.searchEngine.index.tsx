@@ -6,7 +6,7 @@ import { InputInterface } from "./component.searchEngine.type";
 import { searchOnFrontEnd, searchState, SearchType } from "database/search";
 import { Label, Input, ButtonSearch, SearchResultBox, SearchResultItem, SearchResultItemHeader } from "./component.searchEngine.style";
 
-export default function ComponentSearchEngine({ id, name, defaultValue, placeholder, pattern, error, register, required, accept, multiple }: InputInterface) {
+export default function ComponentSearchEngine({ id, name, placeholder }: InputInterface) {
   const [focus, setFocus] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResult, setSearchResult] = useState(searchState);

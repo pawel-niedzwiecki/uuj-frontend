@@ -1,14 +1,14 @@
 import Link from "next/link";
-import { useForm } from "react-hook-form";
 import { DisplayMenuType } from "database/menu";
 import React, { useState, useEffect } from "react";
+import { DisplayContactType } from "database/contact";
 import { Header, Form, Menu, MenuItem, BoxContact, Hambuger } from "./index.header.style";
 import { SearchEngine } from "components/orgamis/form/component.form.index";
 import { Container, Row, Col } from "components/orgamis/flexboxgrid/index.flexboxgrid";
 
 import Logo from "assets/icon/logo.svg";
 
-const HeaderComponent = ({ data }: { data: { menu: DisplayMenuType } }) => {
+const HeaderComponent = ({ data }: { data: { menu: DisplayMenuType; contact: DisplayContactType } }) => {
   const [menuPower, setMenuPower] = useState(false);
   const [menuContactShow, setMenuContactShow] = useState(true);
 
@@ -33,12 +33,6 @@ const HeaderComponent = ({ data }: { data: { menu: DisplayMenuType } }) => {
     return () => window.removeEventListener("scroll", (e) => switchMenu(e));
   }, [menuContactShow]);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
   return (
     <>
       <Header>
@@ -51,11 +45,11 @@ const HeaderComponent = ({ data }: { data: { menu: DisplayMenuType } }) => {
                 </a>
               </Link>
               <Form
-                onSubmit={handleSubmit(({ search }): void => {
-                  console.log(search);
-                })}
+                onSubmit={(e) => {
+                  e.preventDefault();
+                }}
               >
-                <SearchEngine id="search" name="search" error={errors.identifier} placeholder="Szukaj..." register={register} required />
+                <SearchEngine id="query" name="query" placeholder="Szukaj..." />
               </Form>
               <Hambuger onClick={() => setMenuPower(!menuPower)}>
                 <span></span>
@@ -82,14 +76,14 @@ const HeaderComponent = ({ data }: { data: { menu: DisplayMenuType } }) => {
               </Menu>
             </Col>
             <Col xs={12} className="col">
-              <BoxContact href="tel:888333885" power={menuContactShow}>
-                +48 888 333 885
+              <BoxContact href={`tel:${data.contact.data?.attributes.number_phones?.data[0].attributes.number_phone}`} power={menuContactShow}>
+                {data.contact.data?.attributes.number_phones?.data[0].attributes.number_phone}
               </BoxContact>
-              <BoxContact href="tel:888333885" power={menuContactShow}>
-                biuro@uuj.pl
+              <BoxContact href={`mailto:${data.contact.data?.attributes.e_mail?.data.attributes.email}`} power={menuContactShow}>
+                {data.contact.data?.attributes.e_mail?.data.attributes.email}
               </BoxContact>
-              <BoxContact href="tel:888333885" power={menuContactShow}>
-                +48 888 333 885
+              <BoxContact href={`tel:${data.contact.data?.attributes.number_phones?.data[1].attributes.number_phone}`} power={menuContactShow}>
+                {data.contact.data?.attributes.number_phones?.data[1].attributes.number_phone}
               </BoxContact>
             </Col>
           </Row>
