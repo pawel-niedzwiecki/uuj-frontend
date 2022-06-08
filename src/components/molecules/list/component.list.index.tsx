@@ -2,7 +2,6 @@ import { Style } from "util";
 import { List } from "./component.list.style";
 
 export default function ComponentList({ children, type, style }: { children?: any; type: ListTypeEnum; style?: {} }) {
-  console.log(typeof children);
   return (
     <List type={type} style={style}>
       {children}

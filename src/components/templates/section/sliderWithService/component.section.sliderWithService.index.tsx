@@ -16,7 +16,6 @@ import ComponentList, { ListTypeEnum } from "components/molecules/list/component
 import { Section, Box, Header, Text, UnitText } from "./component.section.sliderWithService.style";
 
 export default function ComponentSliderWithService({ data }: { data: { slider: Slider | undefined } }) {
-  console.log(data.slider);
   return (
     <Section>
       {!!data.slider?.data?.length && (
