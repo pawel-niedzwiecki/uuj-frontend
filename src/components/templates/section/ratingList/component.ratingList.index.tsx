@@ -5,25 +5,26 @@ import StarBlack from "assets/icon/starBlack.svg";
 import HalfStarBlack from "assets/icon/halfStarBlack.svg";
 import { Carousel } from "react-responsive-carousel";
 import logoOnYellowBackgroud from "assets/image/logoOnYellowBackgroud.png";
-import { Section, Header, Title, AllRating, MeanRating, RatingBox, RatingTitle, RatingContent, RatingFaceAuthor, RatingAuthorDataBox, RatingAuthorName, RatingDateAdds, RatingAuthor } from "./component.ratingList.style";
 import { Container, Row, Col } from "components/orgamis/flexboxgrid/index.flexboxgrid";
+import { Section, Header, Title, AllRating, MeanRating, RatingBox, RatingTitle, RatingContent, RatingFaceAuthor, RatingAuthorDataBox, RatingAuthorName, RatingDateAdds, RatingAuthor } from "./component.ratingList.style";
 import { Rating, Ratings } from "database/pages/home";
 
-export default function ComponentSectionRatingList({ data }: { data: Ratings }): JSX.Element {
+export default function ComponentSectionRatingList({ data }: { data: Ratings | undefined }): JSX.Element {
+  console.log(data?.cover?.data);
   return (
     <Section>
       <Container>
         <Row>
           <Col xs={12}>
             <Header>Jak oceniają nas klienci ?</Header>
-            <Title>UUJ POMOC DROGOWA</Title>
+            <Title>{data?.title}</Title>
           </Col>
         </Row>
       </Container>
       <Container size="full" style={{ backgroundColor: "#FFCC00", padding: "0 1.5rem", margin: "3rem 0" }}>
         <Row>
           <Col xs={12} style={{ display: "flex", justifyContent: "center" }}>
-            <Image src={logoOnYellowBackgroud} alt="Picture of the author" width="300px" height="300px" />
+            {data?.cover?.data?.attributes?.url && <Image src={data?.cover?.data?.attributes?.url} alt="Picture of the author" width="300px" height="300px" />}
           </Col>
         </Row>
       </Container>
