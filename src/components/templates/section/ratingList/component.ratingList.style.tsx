@@ -367,6 +367,7 @@ export const RatingBox = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  margin: ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.main} 0;
   background-color: ${({ theme }: { theme: MainSettingsTemplate }) => theme.colorSecoundBg};
   padding: ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.big} ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.main};
 `;

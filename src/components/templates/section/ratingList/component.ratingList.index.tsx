@@ -44,8 +44,8 @@ export default function ComponentSectionRatingList(): JSX.Element {
           <Col xs={12}>
             <Carousel showArrows={true} showThumbs={false} autoPlay={false} infiniteLoop={true} showStatus={false} showIndicators={false}>
               <Container>
-                <Row>
-                  <Col xs={1} md={2} lg={4}>
+                <Row style={{ justifyContent: "center" }}>
+                  <Col xs={12} md={6} lg={4}>
                     <RatingBox>
                       <RatingTitle>LTMS Sp. z o.o.</RatingTitle>
                       <RatingContent>Nasza Auto pomoc działa na terenie województwa lubuskiego nie przerwanie od ponad 20 lat 24 godziny n a dobę 7 dni w tygodniu.</RatingContent>
@@ -65,7 +65,7 @@ export default function ComponentSectionRatingList(): JSX.Element {
                       </RatingAuthorDataBox>
                     </RatingBox>
                   </Col>
-                  <Col xs={1} md={2} lg={4}>
+                  <Col xs={12} md={6} lg={4}>
                     <RatingBox>
                       <RatingTitle>LTMS Sp. z o.o.</RatingTitle>
                       <RatingContent>Nasza Auto pomoc działa na terenie województwa lubuskiego nie przerwanie od ponad 20 lat 24 godziny n a dobę 7 dni w tygodniu.</RatingContent>
@@ -85,7 +85,7 @@ export default function ComponentSectionRatingList(): JSX.Element {
                       </RatingAuthorDataBox>
                     </RatingBox>
                   </Col>
-                  <Col xs={1} md={2} lg={4}>
+                  <Col xs={12} md={6} lg={4}>
                     <RatingBox>
                       <RatingTitle>LTMS Sp. z o.o.</RatingTitle>
                       <RatingContent>Nasza Auto pomoc działa na terenie województwa lubuskiego nie przerwanie od ponad 20 lat 24 godziny n a dobę 7 dni w tygodniu.</RatingContent>
@@ -108,8 +108,8 @@ export default function ComponentSectionRatingList(): JSX.Element {
                 </Row>
               </Container>
               <Container>
-                <Row>
-                  <Col xs={1} md={2} lg={4}>
+                <Row style={{ justifyContent: "center" }}>
+                  <Col xs={12} md={6} lg={4}>
                     <RatingBox>
                       <RatingTitle>LTMS Sp. z o.o.</RatingTitle>
                       <RatingContent>Nasza Auto pomoc działa na terenie województwa lubuskiego nie przerwanie od ponad 20 lat 24 godziny n a dobę 7 dni w tygodniu.</RatingContent>
@@ -129,7 +129,7 @@ export default function ComponentSectionRatingList(): JSX.Element {
                       </RatingAuthorDataBox>
                     </RatingBox>
                   </Col>
-                  <Col xs={1} md={2} lg={4}>
+                  <Col xs={12} md={6} lg={4}>
                     <RatingBox>
                       <RatingTitle>LTMS Sp. z o.o.</RatingTitle>
                       <RatingContent>Nasza Auto pomoc działa na terenie województwa lubuskiego nie przerwanie od ponad 20 lat 24 godziny n a dobę 7 dni w tygodniu.</RatingContent>
@@ -149,7 +149,7 @@ export default function ComponentSectionRatingList(): JSX.Element {
                       </RatingAuthorDataBox>
                     </RatingBox>
                   </Col>
-                  <Col xs={1} md={2} lg={4}>
+                  <Col xs={12} md={6} lg={4}>
                     <RatingBox>
                       <RatingTitle>LTMS Sp. z o.o.</RatingTitle>
                       <RatingContent>Nasza Auto pomoc działa na terenie województwa lubuskiego nie przerwanie od ponad 20 lat 24 godziny n a dobę 7 dni w tygodniu.</RatingContent>
