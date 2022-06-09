@@ -42,9 +42,9 @@ export default function ComponentSliderWithService({ data }: { data: { slider: S
                                   {advantage.icon === "tireflat" && <Tireflat />}
                                   {advantage.icon === "truck" && <Truck />}
                                   {advantage.icon === "wheelchair" && <Wheelchair />}
-                                  <span>
+                                  <div>
                                     <ReactMarkdown>{advantage.content}</ReactMarkdown>
-                                  </span>
+                                  </div>
                                 </Text>
                               </li>
                             );

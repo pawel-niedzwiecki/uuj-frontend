@@ -363,7 +363,7 @@ export const Header = styled.h2`
   padding-bottom: ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.big};
 `;
 
-export const Text = styled.p`
+export const Text = styled.div`
   width: 100%;
   display: flex;
   color: white;
