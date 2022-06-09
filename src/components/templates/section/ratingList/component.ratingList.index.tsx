@@ -7,8 +7,9 @@ import { Carousel } from "react-responsive-carousel";
 import logoOnYellowBackgroud from "assets/image/logoOnYellowBackgroud.png";
 import { Section, Header, Title, AllRating, MeanRating, RatingBox, RatingTitle, RatingContent, RatingFaceAuthor, RatingAuthorDataBox, RatingAuthorName, RatingDateAdds, RatingAuthor } from "./component.ratingList.style";
 import { Container, Row, Col } from "components/orgamis/flexboxgrid/index.flexboxgrid";
+import { Rating, Ratings } from "database/pages/home";
 
-export default function ComponentSectionRatingList(): JSX.Element {
+export default function ComponentSectionRatingList({ data }: { data: Ratings }): JSX.Element {
   return (
     <Section>
       <Container>

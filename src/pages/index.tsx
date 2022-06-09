@@ -8,7 +8,7 @@ function Home({ menuHeader, contactHeader, dataPageHome }: { menuHeader: Display
   return (
     <Laout data={{ header: { menu: menuHeader, contact: contactHeader } }}>
       <ComponentSliderWithService data={{ slider: dataPageHome?.data?.attributes?.slider }} />
-      <ComponentSectionRatingList />
+      <ComponentSectionRatingList data={dataPageHome.data?.attributes.raitings} />
     </Laout>
   );
 }

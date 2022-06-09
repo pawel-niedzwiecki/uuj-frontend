@@ -28,6 +28,128 @@ export type Slide = {
 
 export type Slider = { data: Slide[] | undefined };
 
+export type Rating = {
+  id: number;
+  attributes: {
+    rating: number;
+    author: string;
+    content: string;
+    createdAt: Date;
+    updatedAt: Date;
+    cover: {
+      data: {
+        id: 3;
+        attributes: {
+          name: string;
+          alternativeText: string;
+          caption: string;
+          width: number;
+          height: number;
+          formats: {
+            large: {
+              ext: string;
+              url: string;
+              hash: string;
+              mime: string;
+              name: string;
+              path: null | string;
+              size: number;
+              width: number;
+              height: number;
+            };
+            small: {
+              ext: string;
+              url: string;
+              hash: string;
+              mime: string;
+              name: string;
+              path: null | string;
+              size: number;
+              width: number;
+              height: number;
+            };
+            medium: {
+              ext: string;
+              url: string;
+              hash: string;
+              mime: string;
+              name: string;
+              path: null | string;
+              size: number;
+              width: number;
+              height: number;
+            };
+            thumbnail: {
+              ext: string;
+              url: string;
+              hash: string;
+              mime: string;
+              name: string;
+              path: null | string;
+              size: number;
+              width: number;
+              height: number;
+            };
+          };
+          hash: string;
+          ext: string;
+          mime: string;
+          size: number;
+          url: string;
+          previewUrl: null | string;
+          provider: string;
+          provider_metadata: null | string;
+          createdAt: Date;
+          updatedAt: Date;
+        };
+      };
+    };
+  };
+};
+
+export type Ratings = {
+  id: number;
+  title: string;
+  ratings: {
+    data: Rating[];
+  };
+  cover: {
+    data: {
+      id: number;
+      attributes: {
+        name: string;
+        alternativeText: string;
+        caption: string;
+        width: 400;
+        height: 400;
+        formats: {
+          thumbnail: {
+            ext: string;
+            url: string;
+            hash: string;
+            mime: string;
+            name: string;
+            path: null | string;
+            size: number;
+            width: number;
+            height: number;
+          };
+        };
+        hash: string;
+        ext: string;
+        mime: string;
+        size: number;
+        url: string;
+        previewUrl: null | string;
+        provider: string;
+        provider_metadata: null | string;
+        createdAt: Date;
+        updatedAt: Date;
+      };
+    };
+  };
+};
+
 export type Data = null | {
   id: number;
   attributes: {
@@ -35,125 +157,7 @@ export type Data = null | {
     updatedAt: Date;
     seo?: Seo;
     slider?: Slider;
-    raitings?: {
-      id: number;
-      title: string;
-      ratings: {
-        data: {
-          id: number;
-          attributes: {
-            rating: number;
-            author: string;
-            content: string;
-            createdAt: Date;
-            updatedAt: Date;
-            cover: {
-              data: {
-                id: 3;
-                attributes: {
-                  name: string;
-                  alternativeText: string;
-                  caption: string;
-                  width: number;
-                  height: number;
-                  formats: {
-                    large: {
-                      ext: string;
-                      url: string;
-                      hash: string;
-                      mime: string;
-                      name: string;
-                      path: null | string;
-                      size: number;
-                      width: number;
-                      height: number;
-                    };
-                    small: {
-                      ext: string;
-                      url: string;
-                      hash: string;
-                      mime: string;
-                      name: string;
-                      path: null | string;
-                      size: number;
-                      width: number;
-                      height: number;
-                    };
-                    medium: {
-                      ext: string;
-                      url: string;
-                      hash: string;
-                      mime: string;
-                      name: string;
-                      path: null | string;
-                      size: number;
-                      width: number;
-                      height: number;
-                    };
-                    thumbnail: {
-                      ext: string;
-                      url: string;
-                      hash: string;
-                      mime: string;
-                      name: string;
-                      path: null | string;
-                      size: number;
-                      width: number;
-                      height: number;
-                    };
-                  };
-                  hash: string;
-                  ext: string;
-                  mime: string;
-                  size: number;
-                  url: string;
-                  previewUrl: null | string;
-                  provider: string;
-                  provider_metadata: null | string;
-                  createdAt: Date;
-                  updatedAt: Date;
-                };
-              };
-            };
-          };
-        }[];
-      };
-      cover: {
-        data: {
-          id: number;
-          attributes: {
-            name: string;
-            alternativeText: string;
-            caption: string;
-            width: 400;
-            height: 400;
-            formats: {
-              thumbnail: {
-                ext: string;
-                url: string;
-                hash: string;
-                mime: string;
-                name: string;
-                path: null | string;
-                size: number;
-                width: number;
-                height: number;
-              };
-            };
-            hash: string;
-            ext: string;
-            mime: string;
-            size: number;
-            url: string;
-            previewUrl: null | string;
-            provider: string;
-            provider_metadata: null | string;
-            createdAt: Date;
-            updatedAt: Date;
-          };
-        };
-      };
-    };
+    raitings?: Ratings;
   };
   meta?: {};
 };
