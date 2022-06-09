@@ -15,7 +15,7 @@ function Home({ menuHeader, contactHeader, dataPageHome }: { menuHeader: Display
 
 export async function getStaticProps() {
   const menuHeader = await displayMenu({ name: "header" });
-  const dataPageHome = await displayHomeOnBackEnd({ seo: true, slider: true });
+  const dataPageHome = await displayHomeOnBackEnd({ seo: true, slider: true, raitings: true });
   const contactHeader = await displayContactOnBackEnd({ numberPhones: true, email: true });
 
   return {
