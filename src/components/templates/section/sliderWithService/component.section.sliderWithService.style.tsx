@@ -12,7 +12,11 @@ export const Section = styled.section`
   @media all and (min-width: 768px) {
     padding: 15rem 0 5rem 0;
   }
+
   .col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding-bottom: ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.main};
   }
 
