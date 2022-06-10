@@ -34,6 +34,12 @@ export const Service = styled.div`
         color: ${({ theme }: { theme: MainSettingsTemplate }) => theme.colorTextDesactive};
       }
 
+      &:last-child {
+        &::after {
+          display: none;
+        }
+      }
+
       span {
         color: ${({ theme }: { theme: MainSettingsTemplate }) => theme.colorTextDesactive};
       }
