@@ -11,7 +11,7 @@ function Home({ menuHeader, contactHeader, dataPageHome, categories }: { menuHea
       <ComponentSliderWithService data={{ slider: dataPageHome?.data?.attributes?.slider }} />
       <ComponentSectionRatingList data={dataPageHome.data?.attributes.raitings} />
       <ComponentSectionServiceList data={categories.data} />
-      <ComponentSectionNewsList data={categories.data} />
+      <ComponentSectionNewsList />
     </Laout>
   );
 }

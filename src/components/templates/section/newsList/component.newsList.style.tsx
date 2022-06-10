@@ -11,60 +11,78 @@ export const Header = styled.h2`
   width: 100%;
   display: block;
   text-align: center;
-  margin-bottom: ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.big} 0;
+  margin-bottom: ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.big};
 `;
 
-export const Service = styled.div`
+export const Aricle = styled.article`
   width: 100%;
+  height: auto;
   display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
   position: relative;
-  flex-direction: column;
-  margin: ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.big} 0;
+  margin-bottom: ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.main};
   background-color: ${({ theme }: { theme: MainSettingsTemplate }) => theme.colorPostPrimmaryBg};
-  ul {
-    padding: ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.big} ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.main};
-
-    a {
-      font-weight: bold;
-      font-size: 1.4rem;
-      padding-right: ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.small};
-
-      &:after {
-        content: ",";
-        color: ${({ theme }: { theme: MainSettingsTemplate }) => theme.colorTextDesactive};
-      }
-
-      &:last-child {
-        &::after {
-          display: none;
-        }
-      }
-
-      span {
-        color: ${({ theme }: { theme: MainSettingsTemplate }) => theme.colorTextDesactive};
-      }
-    }
-  }
 `;
 
-export const ServiceCategoryCover = styled.div`
+export const AricleCover = styled.div`
   width: 100%;
   display: block;
   overflow: hidden;
-  max-height: 30rem;
-  position: relative;
+  max-height: 20rem;
 `;
 
-export const ServiceCategoryTitle = styled.h3`
+export const AricleTitle = styled.h4`
   width: 100%;
   display: block;
-  position: relative;
+  text-align: left;
   padding: ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.main};
 `;
 
-export const ServiceCategoryDescription = styled.div`
+export const AricleAuthorAvatar = styled.div`
+  width: 4rem;
+  height: 4rem;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  border-radius: 100%;
+  background-color: black;
+  margin-left: ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.main};
+`;
+
+export const AricleAuthorDataBox = styled.div`
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  width: calc(100% - 5.5rem);
+  padding-left: ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.small};
+`;
+
+export const AricleAuthorName = styled.h5`
   width: 100%;
   display: block;
-  position: relative;
-  padding: 0 ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.main};
+  text-align: left;
+`;
+
+export const AricleDateAdds = styled.p`
+  width: 100%;
+  display: block;
+  text-align: left;
+  font-size: 1.2rem;
+`;
+
+export const ArticleQuote = styled.p`
+  width: 100%;
+  display: block;
+  text-align: left;
+  padding: ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.main};
+`;
+
+export const More = styled.div`
+  width: 100%;
+  display: block;
+  text-align: right;
+  font-weight: bold;
+  padding: 0 ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.main} ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.main} 0;
 `;

@@ -63,7 +63,7 @@ export default function ComponentSectionRatingList({ data }: { data: Ratings | u
                               <RatingFaceAuthor>{item?.attributes?.cover?.data?.attributes?.url && <Image src={item.attributes.cover.data.attributes.url} alt={item.attributes.author} width="60px" height="60px" />}</RatingFaceAuthor>
                               <RatingAuthorDataBox>
                                 <RatingAuthorName>{item.attributes.author}</RatingAuthorName>
-                                <RatingDateAdds>{time.countDays(Date.parse(item.attributes.createdAt.toString()))}</RatingDateAdds>
+                                <RatingDateAdds>{item.attributes.createdAt && time.countDays(item.attributes.createdAt)}</RatingDateAdds>
                                 <RatingAuthor>
                                   {new Array(Math.round(item.attributes.rating)).fill(undefined).map((_: undefined, i: number) => {
                                     if (Math.round(item.attributes.rating) - 1 === i && item.attributes.rating % 1 > 0) return <HalfStarBlack key={i} />;
