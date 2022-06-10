@@ -7,7 +7,7 @@ import List, { ListTypeEnum } from "components/molecules/list/component.list.ind
 import { Container, Row, Col } from "components/orgamis/flexboxgrid/index.flexboxgrid";
 import { Section, Header, Service, ServiceCategoryCover, ServiceCategoryTitle, ServiceCategoryDescription } from "./component.newsList.style";
 
-export default function ComponentSectionServiceList({ data }: { data: CategoryType[] }) {
+export default function ComponentSectionNewsList({ data }: { data: CategoryType[] }) {
   return (
     <Section>
       <Container>

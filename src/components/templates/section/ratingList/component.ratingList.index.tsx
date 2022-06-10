@@ -1,9 +1,10 @@
 import Image from "next/image";
+import time from "utils/utils.time";
 import Star from "assets/icon/star.svg";
 import HalfStar from "assets/icon/halfStar.svg";
 import StarBlack from "assets/icon/starBlack.svg";
-import HalfStarBlack from "assets/icon/halfStarBlack.svg";
 import { Carousel } from "react-responsive-carousel";
+import HalfStarBlack from "assets/icon/halfStarBlack.svg";
 import { Container, Row, Col } from "components/orgamis/flexboxgrid/index.flexboxgrid";
 import { Section, Header, Title, AllRating, MeanRating, RatingBox, RatingTitle, RatingContent, RatingFaceAuthor, RatingAuthorDataBox, RatingAuthorName, RatingDateAdds, RatingAuthor } from "./component.ratingList.style";
 import { Rating, Ratings } from "database/pages/home";
@@ -62,7 +63,7 @@ export default function ComponentSectionRatingList({ data }: { data: Ratings | u
                               <RatingFaceAuthor>{item?.attributes?.cover?.data?.attributes?.url && <Image src={item.attributes.cover.data.attributes.url} alt={item.attributes.author} width="60px" height="60px" />}</RatingFaceAuthor>
                               <RatingAuthorDataBox>
                                 <RatingAuthorName>{item.attributes.author}</RatingAuthorName>
-                                <RatingDateAdds>Miesiąc temu</RatingDateAdds>
+                                <RatingDateAdds>{time.countDays(Date.parse(item.attributes.createdAt.toString()))}</RatingDateAdds>
                                 <RatingAuthor>
                                   {new Array(Math.round(item.attributes.rating)).fill(undefined).map((_: undefined, i: number) => {
                                     if (Math.round(item.attributes.rating) - 1 === i && item.attributes.rating % 1 > 0) return <HalfStarBlack key={i} />;
