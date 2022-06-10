@@ -56,7 +56,7 @@ export const ServiceCategoryTitle = styled.h3`
   padding: ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.main};
 `;
 
-export const ServiceCategoryDescription = styled.p`
+export const ServiceCategoryDescription = styled.div`
   width: 100%;
   display: block;
   position: relative;

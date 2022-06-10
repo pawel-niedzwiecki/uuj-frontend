@@ -24,26 +24,27 @@ export default function ComponentSectionServiceList() {
                 <ReactMarkdown>Nazwa kategoriiiNazwa kategoriiiNazwa kategoriiiNazwa kategoriiiNazwa kategoriiiNazwa kategoriii</ReactMarkdown>
               </ServiceCategoryDescription>
               <List type={ListTypeEnum.vertical}>
-                <Link href="">
-                  <a>
-                    <span>#</span>ok
-                  </a>
-                </Link>
-                <Link href="">
-                  <a>
-                    <span>#</span>ok
-                  </a>
-                </Link>
-                <Link href="">
-                  <a>
-                    <span>#</span>ok
-                  </a>
-                </Link>
-                <Link href="">
-                  <a>
-                    <span>#</span>ok
-                  </a>
-                </Link>
+                <li>
+                  <Link href="/">
+                    <a>
+                      <span>#</span>ok
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/">
+                    <a>
+                      <span>#</span>ok
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/">
+                    <a>
+                      <span>#</span>ok
+                    </a>
+                  </Link>
+                </li>
               </List>
             </Service>
           </Col>
