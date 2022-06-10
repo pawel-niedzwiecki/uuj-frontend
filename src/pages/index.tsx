@@ -4,17 +4,16 @@ import { displayCategory, DisplayCategoryType } from "database/categories";
 import { displayNewsList, DisplayNewsListType } from "database/news";
 import { displayHomeOnBackEnd, DisplayHomeType } from "database/pages/home";
 import { displayContactOnBackEnd, DisplayContactType } from "database/pages/contact";
-import { ComponentSliderWithService, ComponentSectionRatingList, ComponentSectionServiceList, ComponentSectionNewsList } from "components/templates/section";
+import { ComponentSliderWithService, ComponentSectionRatingList, ComponentSectionServiceList, ComponentSectionNewsList, ComponentSectionFaq } from "components/templates/section";
 
 function Home({ menuHeader, contactHeader, dataPageHome, categories, newsList }: { menuHeader: DisplayMenuType; contactHeader: DisplayContactType; dataPageHome: DisplayHomeType; categories: DisplayCategoryType; newsList: DisplayNewsListType }) {
-  console.log(newsList);
-
   return (
     <Laout data={{ header: { menu: menuHeader, contact: contactHeader } }}>
       <ComponentSliderWithService data={{ slider: dataPageHome?.data?.attributes?.slider }} />
       <ComponentSectionRatingList data={dataPageHome.data?.attributes.raitings} />
       <ComponentSectionServiceList data={categories.data} />
       <ComponentSectionNewsList data={{ newsList: newsList.data, pagination: false, pageCount: newsList.meta.pagination.pageCount }} />
+      <ComponentSectionFaq />
     </Laout>
   );
 }
