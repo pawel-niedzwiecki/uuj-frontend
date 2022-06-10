@@ -27,9 +27,10 @@ export const Aricle = styled.article`
 
 export const AricleCover = styled.div`
   width: 100%;
+  height: 20rem;
   display: block;
   overflow: hidden;
-  max-height: 20rem;
+  position: relative;
 `;
 
 export const AricleTitle = styled.h4`
@@ -46,8 +47,8 @@ export const AricleAuthorAvatar = styled.div`
   overflow: hidden;
   position: relative;
   border-radius: 100%;
-  background-color: black;
   margin-left: ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.main};
+  border: 0.2rem solid ${({ theme }: { theme: MainSettingsTemplate }) => theme.colorBorder};
 `;
 
 export const AricleAuthorDataBox = styled.div`

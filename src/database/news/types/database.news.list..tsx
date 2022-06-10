@@ -152,18 +152,28 @@ export interface Author {
   };
 }
 
+export interface NewsListType {
+  id: number;
+  attributes: {
+    title: string;
+    quote: string;
+    content: string;
+    createdAt: Date;
+    updatedAt: Date;
+    category?: Category;
+    cover?: Cover;
+    author?: Author;
+  };
+}
+
 export interface DisplayNewsListType {
-  data: {
-    id: number;
-    attributes: {
-      title: string;
-      quote: string;
-      content: string;
-      createdAt: Date;
-      updatedAt: Date;
-      category: Category;
-      cover: Cover;
-      author: Author;
+  data: NewsListType[];
+  meta: {
+    pagination: {
+      page: number;
+      pageSize: number;
+      pageCount: number;
+      total: number;
     };
-  }[];
+  };
 }
