@@ -5,7 +5,7 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { CategoryType, ServiceType } from "database/categories/index";
 import List, { ListTypeEnum } from "components/molecules/list/component.list.index";
 import { Container, Row, Col } from "components/orgamis/flexboxgrid/index.flexboxgrid";
-import { Section, Header, Service, ServiceCategoryCover, ServiceCategoryTitle, ServiceCategoryDescription } from "./component.servicesList.style";
+import { Section, Header, Service, ServiceCategoryCover, ServiceCategoryTitle, ServiceCategoryDescription } from "./component.newsList.style";
 
 export default function ComponentSectionServiceList({ data }: { data: CategoryType[] }) {
   return (
