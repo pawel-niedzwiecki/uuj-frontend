@@ -152,6 +152,20 @@ export type Ratings = {
   };
 };
 
+export interface FaqType {
+  id: 1;
+  attributes: {
+    title: string;
+    content: string;
+    createdAt: Date;
+    updatedAt: Date;
+  };
+}
+
+export interface FaqsType {
+  data: FaqType[];
+}
+
 export type Data = null | {
   id: number;
   attributes: {
@@ -160,6 +174,7 @@ export type Data = null | {
     seo?: Seo;
     slider?: Slider;
     raitings?: Ratings;
+    faqs?: FaqsType;
   };
   meta?: {};
 };

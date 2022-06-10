@@ -13,14 +13,14 @@ function Home({ menuHeader, contactHeader, dataPageHome, categories, newsList }:
       <ComponentSectionRatingList data={dataPageHome.data?.attributes.raitings} />
       <ComponentSectionServiceList data={categories.data} />
       <ComponentSectionNewsList data={{ newsList: newsList.data, pagination: false, pageCount: newsList.meta.pagination.pageCount }} />
-      <ComponentSectionFaq />
+      <ComponentSectionFaq data={dataPageHome.data?.attributes.faqs?.data} />
     </Laout>
   );
 }
 
 export async function getStaticProps() {
   const menuHeader: DisplayMenuType = await displayMenu({ name: "header" });
-  const dataPageHome: DisplayHomeType = await displayHomeOnBackEnd({ seo: true, slider: true, raitings: true });
+  const dataPageHome: DisplayHomeType = await displayHomeOnBackEnd({ seo: true, faqs: true, slider: true, raitings: true });
   const contactHeader: DisplayContactType = await displayContactOnBackEnd({ numberPhones: true, email: true });
   const categories: DisplayCategoryType = await displayCategory({ cover: true, services: true });
   const newsList: DisplayNewsListType = await displayNewsList({ cover: true, category: true, author: true });

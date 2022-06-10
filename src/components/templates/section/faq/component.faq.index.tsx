@@ -1,8 +1,10 @@
+import { FaqType } from "database/pages/home";
 import { Section, Header } from "./component.faq.style";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { Container, Row, Col } from "components/orgamis/flexboxgrid/index.flexboxgrid";
 import { Accordion, AccordionItem, AccordionItemHeading, AccordionItemButton, AccordionItemPanel } from "react-accessible-accordion";
 
-export default function ComponentSectionFaq() {
+export default function ComponentSectionFaq({ data }: { data: FaqType[] | undefined }): JSX.Element {
   return (
     <Section>
       <Container>
@@ -12,22 +14,19 @@ export default function ComponentSectionFaq() {
           </Col>
           <Col xs={12}>
             <Accordion>
-              <AccordionItem>
-                <AccordionItemHeading>
-                  <AccordionItemButton>What harsh truths do you prefer to ignore?</AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                  <p>Exercitation in fugiat est ut ad ea cupidatat ut in cupidatat occaecat ut occaecat consequat est minim minim esse tempor laborum consequat esse adipisicing eu reprehenderit enim.</p>
-                </AccordionItemPanel>
-              </AccordionItem>
-              <AccordionItem>
-                <AccordionItemHeading>
-                  <AccordionItemButton>Is free will real or just an illusion?</AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                  <p>In ad velit in ex nostrud dolore cupidatat consectetur ea in ut nostrud velit in irure cillum tempor laboris sed adipisicing eu esse duis nulla non.</p>
-                </AccordionItemPanel>
-              </AccordionItem>
+              {!!data?.length &&
+                data.map((faq: FaqType, index: number): JSX.Element => {
+                  return (
+                    <AccordionItem key={index}>
+                      <AccordionItemHeading>
+                        <AccordionItemButton>{faq.attributes.title}</AccordionItemButton>
+                      </AccordionItemHeading>
+                      <AccordionItemPanel>
+                        <ReactMarkdown>{faq.attributes.content}</ReactMarkdown>
+                      </AccordionItemPanel>
+                    </AccordionItem>
+                  );
+                })}
             </Accordion>
           </Col>
         </Row>
