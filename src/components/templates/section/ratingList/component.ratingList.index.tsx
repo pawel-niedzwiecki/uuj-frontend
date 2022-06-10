@@ -4,7 +4,6 @@ import HalfStar from "assets/icon/halfStar.svg";
 import StarBlack from "assets/icon/starBlack.svg";
 import HalfStarBlack from "assets/icon/halfStarBlack.svg";
 import { Carousel } from "react-responsive-carousel";
-import logoOnYellowBackgroud from "assets/image/logoOnYellowBackgroud.png";
 import { Container, Row, Col } from "components/orgamis/flexboxgrid/index.flexboxgrid";
 import { Section, Header, Title, AllRating, MeanRating, RatingBox, RatingTitle, RatingContent, RatingFaceAuthor, RatingAuthorDataBox, RatingAuthorName, RatingDateAdds, RatingAuthor } from "./component.ratingList.style";
 import { Rating, Ratings } from "database/pages/home";
@@ -14,7 +13,7 @@ export default function ComponentSectionRatingList({ data }: { data: Ratings | u
   const countRatingsAll = countRaitings({ ratings: data?.ratings.data });
   let newArray: Rating[][] = [];
   new Array(Math.round(countRatingsAll.count / 3)).fill(undefined).forEach((_, i) => data?.ratings?.data && newArray.push(data?.ratings.data.slice(i * 3, i * 3 + 3)));
-  console.log(newArray);
+
   return (
     <Section>
       <Container>

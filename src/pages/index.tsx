@@ -2,13 +2,14 @@ import Laout from "layout/laout.index";
 import { displayMenu, DisplayMenuType } from "database/menu";
 import { displayHomeOnBackEnd, DisplayHomeType } from "database/pages/home";
 import { displayContactOnBackEnd, DisplayContactType } from "database/pages/contact";
-import { ComponentSliderWithService, ComponentSectionRatingList } from "components/templates/section";
+import { ComponentSliderWithService, ComponentSectionRatingList, ComponentSectionServiceList } from "components/templates/section";
 
 function Home({ menuHeader, contactHeader, dataPageHome }: { menuHeader: DisplayMenuType; contactHeader: DisplayContactType; dataPageHome: DisplayHomeType }) {
   return (
     <Laout data={{ header: { menu: menuHeader, contact: contactHeader } }}>
       <ComponentSliderWithService data={{ slider: dataPageHome?.data?.attributes?.slider }} />
       <ComponentSectionRatingList data={dataPageHome.data?.attributes.raitings} />
+      <ComponentSectionServiceList />
     </Laout>
   );
 }

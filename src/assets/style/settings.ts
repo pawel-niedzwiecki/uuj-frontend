@@ -13,7 +13,7 @@ const settings: MainSettingsTemplate = {
   colorSecoundBg: "#FFCC00",
   colorBorder: "#000",
   colorButtonBg: "#000",
-  colorPostPrimmaryBg: "#FFF",
+  colorPostPrimmaryBg: "#CCC",
   colorDangerBg: "rgba(255, 0, 0, 0.1)",
   colorDangerBorder: "red",
   colorSuccessBorder: "green",
