@@ -31,6 +31,7 @@ export type Slider = { data: Slide[] | undefined };
 export type Rating = {
   id: number;
   attributes: {
+    from: string;
     rating: number;
     author: string;
     content: string;
@@ -113,6 +114,7 @@ export type Ratings = {
   ratings: {
     data: Rating[];
   };
+
   cover: {
     data: {
       id: number;
