@@ -9,7 +9,7 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import { Carousel } from "react-responsive-carousel";
 import Wheelchair from "assets/icon/wheelchair.svg";
-import { Advantage, Slide, Slider } from "database/pages/home";
+import { Advantage, Slide, Slider } from "database/home";
 import { Container, Row, Col } from "components/orgamis/flexboxgrid/index.flexboxgrid";
 import ComponentList, { ListTypeEnum } from "components/molecules/list/component.list.index";
 

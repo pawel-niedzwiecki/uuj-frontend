@@ -6,9 +6,9 @@ import { displayHomeOnBackEnd, DisplayHomeType } from "database/home";
 import { displayContactOnBackEnd, DisplayContactType } from "database/contact";
 import { ComponentSliderWithService, ComponentSectionRatingList, ComponentSectionServiceList, ComponentSectionNewsList, ComponentSectionFaq } from "components/templates/section";
 
-function Home({ menuHeader, contact, dataPageHome, categories, newsList }: { menuHeader: DisplayMenuType; contact: DisplayContactType; dataPageHome: DisplayHomeType; categories: DisplayCategoryType; newsList: DisplayNewsListType }) {
+function Home({ menuHeader, contactHeader, dataPageHome, categories, newsList }: { menuHeader: DisplayMenuType; contactHeader: DisplayContactType; dataPageHome: DisplayHomeType; categories: DisplayCategoryType; newsList: DisplayNewsListType }) {
   return (
-    <Laout data={{ header: { menu: menuHeader, contact } }}>
+    <Laout data={{ header: { menu: menuHeader, contact: contactHeader } }}>
       <ComponentSliderWithService data={{ slider: dataPageHome?.data?.attributes?.slider }} />
       <ComponentSectionRatingList data={dataPageHome.data?.attributes.raitings} />
       <ComponentSectionServiceList data={categories.data} />
@@ -21,14 +21,14 @@ function Home({ menuHeader, contact, dataPageHome, categories, newsList }: { men
 export async function getStaticProps() {
   const menuHeader: DisplayMenuType = await displayMenu({ name: "header" });
   const dataPageHome: DisplayHomeType = await displayHomeOnBackEnd({ seo: true, faqs: true, slider: true, raitings: true });
-  const contact: DisplayContactType = await displayContactOnBackEnd({ numberPhones: true, email: true, socialMedia: true });
+  const contactHeader: DisplayContactType = await displayContactOnBackEnd({ numberPhones: true, email: true });
   const categories: DisplayCategoryType = await displayCategory({ cover: true, services: true });
   const newsList: DisplayNewsListType = await displayNewsList({ cover: true, category: true, author: true });
 
   return {
     props: {
       menuHeader,
-      contact,
+      contactHeader,
       dataPageHome,
       categories,
       newsList,

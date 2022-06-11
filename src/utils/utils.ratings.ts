@@ -1,4 +1,4 @@
-import { Rating } from "database/pages/home";
+import { Rating } from "database/home";
 
 export const countRaitings = ({ ratings }: { ratings: Rating[] | undefined }) => {
   let ratingsMean = 0;

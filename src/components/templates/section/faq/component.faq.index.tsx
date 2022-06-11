@@ -1,4 +1,4 @@
-import { FaqType } from "database/pages/home";
+import { FaqType } from "database/home";
 import { Section, Header } from "./component.faq.style";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { Container, Row, Col } from "components/orgamis/flexboxgrid/index.flexboxgrid";
