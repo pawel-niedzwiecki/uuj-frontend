@@ -5,8 +5,8 @@ export async function displayContactOnBackEnd({ numberPhones = false, email = fa
   const res = await axios.get(
     process.env.BACKEND_API_URL +
       `/api/contact?${numberPhones ? `populate=number_phones` : ""}${email ? `${numberPhones ? "&" : ""}populate=e_mail` : ""}${socialMedia ? `${email || numberPhones ? "&" : ""}populate=social_media` : ""}${
-        mainAddress ? `${socialMedia || email || numberPhones ? "&" : ""}populate=main_address` : ""
-      }${branches ? `${socialMedia || email || numberPhones ? "&" : ""}populate=branches` : ""}`
+        mainAddress ? `${socialMedia || email || numberPhones ? "&" : ""}populate=main_address&populate=main_address.number_phone&populate=main_address.e_mail` : ""
+      }${branches ? `${socialMedia || email || numberPhones ? "&" : ""}populate=branches&populate=branches.number_phone&populate=branches.e_mail` : ""}`
   );
   return !!res?.data?.error ? res.data : res?.data;
 }

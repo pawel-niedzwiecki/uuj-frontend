@@ -24,7 +24,7 @@ export type SocialMediaType = {
   id: number;
   type: string;
   url: string;
-}[];
+};
 
 export type MainAddressType = {
   data: {
@@ -41,6 +41,26 @@ export type MainAddressType = {
       updatedAt: Date;
       lat: number;
       lng: number;
+      e_mail: {
+        data: {
+          id: number;
+          attributes: {
+            email: string;
+            createdAt: Date;
+            updatedAt: Date;
+          };
+        };
+      };
+      number_phone: {
+        data: {
+          id: number;
+          attributes: {
+            number_phone: string;
+            createdAt: Date;
+            updatedAt: Date;
+          };
+        };
+      };
     };
   };
 };
@@ -59,6 +79,26 @@ export type BrancheType = {
     updatedAt: Date;
     lat: number;
     lng: number;
+    e_mail: {
+      data: {
+        id: number;
+        attributes: {
+          email: string;
+          createdAt: Date;
+          updatedAt: Date;
+        };
+      };
+    };
+    number_phone: {
+      data: {
+        id: number;
+        attributes: {
+          number_phone: string;
+          createdAt: Date;
+          updatedAt: Date;
+        };
+      };
+    };
   };
 };
 
@@ -73,7 +113,7 @@ export type DataType = null | {
     updatedAt: Date;
     number_phones?: NumberPhonesType;
     e_mail?: EmailType;
-    social_media?: SocialMediaType;
+    social_media?: SocialMediaType[];
     main_address?: MainAddressType;
     branches?: BranchesType;
   };

@@ -169,12 +169,13 @@ export interface FaqsType {
 export type Data = null | {
   id: number;
   attributes: {
+    seo?: Seo;
     createdAt: Date;
     updatedAt: Date;
-    seo?: Seo;
     slider?: Slider;
-    raitings?: Ratings;
     faqs?: FaqsType;
+    raitings?: Ratings;
+    description_page: null | string;
   };
   meta?: {};
 };

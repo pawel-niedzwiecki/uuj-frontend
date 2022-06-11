@@ -1,5 +1,6 @@
 import React from "react";
-import { GoogleMap, useJsApiLoader, Marker, Polygon } from "@react-google-maps/api";
+import { MainAddressType, BrancheType } from "database/contact";
+import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 
 const containerStyle = {
   width: "100%",
@@ -11,7 +12,7 @@ const center = {
   lng: 19.4559833,
 };
 
-function MyComponent() {
+function GoogleMaps({ data }: { data: { branches?: BrancheType[]; mainAddress?: MainAddressType } }) {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyAvhh1GZHPC8kCwL2pFli-WOAznuWxi08Q",
@@ -29,21 +30,32 @@ function MyComponent() {
     setMap(null);
   }, []);
 
-  const position = {
-    lat: 51.7592485,
-    lng: 19.4559833,
-  };
-  const position1 = {
-    lat: 51.7592485,
-    lng: 18.4559833,
-  };
-
   return isLoaded ? (
     <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={10} onLoad={onLoad} onUnmount={onUnmount}>
       {/* Child components, such as markers, info windows, etc. */}
       <>
-        <Marker onLoad={onLoad} position={position} />
-        <Marker onLoad={onLoad} position={position1} />
+        {data?.mainAddress?.data?.attributes?.lat && data?.mainAddress?.data?.attributes?.lng && (
+          <Marker
+            onLoad={onLoad}
+            position={{
+              lat: data.mainAddress.data.attributes.lat,
+              lng: data.mainAddress.data.attributes.lng,
+            }}
+          />
+        )}
+        {data.branches?.map((position: BrancheType, index: number) => {
+          if (position?.attributes?.lat && position?.attributes?.lng)
+            return (
+              <Marker
+                key={index}
+                onLoad={onLoad}
+                position={{
+                  lat: position.attributes.lat,
+                  lng: position.attributes.lng,
+                }}
+              />
+            );
+        })}
       </>
     </GoogleMap>
   ) : (
@@ -51,4 +63,4 @@ function MyComponent() {
   );
 }
 
-export default React.memo(MyComponent);
+export default React.memo(GoogleMaps);

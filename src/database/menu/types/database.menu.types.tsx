@@ -1,20 +1,22 @@
-export type data = null | {
+export type MenuItemType = {
+  id: number;
+  order: number;
+  title: string;
+  url: string;
+  target: null | string;
+  createdAt: Date;
+  updatedAt: Date;
+  parent: null | string;
+};
+
+export type MenuType = null | {
   menu: {
     id: number;
     title: string;
     slug: string;
     createdAt: Date;
     updatedAt: Date;
-    items: {
-      id: number;
-      order: number;
-      title: string;
-      url: string;
-      target: null | string;
-      createdAt: Date;
-      updatedAt: Date;
-      parent: null | string;
-    }[];
+    items: MenuItemType[];
   };
 };
 
@@ -26,6 +28,6 @@ export type error = {
 };
 
 export interface DisplayMenuType {
-  data: data;
+  data: MenuType;
   error?: error;
 }
