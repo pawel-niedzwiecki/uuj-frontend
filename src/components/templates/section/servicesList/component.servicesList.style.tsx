@@ -49,10 +49,14 @@ export const Service = styled.div`
 
 export const ServiceCategoryCover = styled.div`
   width: 100%;
+  height: 25rem;
   display: block;
   overflow: hidden;
-  max-height: 30rem;
   position: relative;
+
+  @media all and (min-width: 768px) {
+    height: 45rem;
+  }
 `;
 
 export const ServiceCategoryTitle = styled.h3`

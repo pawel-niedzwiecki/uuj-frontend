@@ -22,7 +22,7 @@ export default function ComponentSectionServiceList({ data }: { data: CategoryTy
                 return (
                   <Col xs={12} key={i}>
                     <Service>
-                      <ServiceCategoryCover>{item?.attributes?.cover?.data?.attributes?.url && <Image src={item.attributes.cover.data.attributes.url} alt={item.attributes.title} layout="responsive" width={1280} height={400} />}</ServiceCategoryCover>
+                      <ServiceCategoryCover>{item?.attributes?.cover?.data?.attributes?.url && <Image src={item.attributes.cover.data.attributes.url} alt={item.attributes.title} layout="fill" width={1280} height={450} />}</ServiceCategoryCover>
                       <ServiceCategoryTitle>{item.attributes.title}</ServiceCategoryTitle>
                       <ServiceCategoryDescription>
                         <ReactMarkdown>{item.attributes.content}</ReactMarkdown>
