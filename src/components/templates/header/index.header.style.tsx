@@ -9,7 +9,6 @@ export const Header = styled.header`
   display: block;
   position: fixed;
   z-index: 9999999;
-  padding-top: ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.small};
   background: ${({ theme }: { theme: MainSettingsTemplate }) => theme.colorSecoundBg};
 
   .brand {
@@ -74,7 +73,8 @@ export const MenuItem = styled.li`
   padding-bottom: ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.main};
 
   @media all and (min-width: 768px) {
-    padding-right: ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.main};
+    max-width: max-content;
+    padding-right: ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.big};
     &:last-child {
       padding-right: 0;
     }

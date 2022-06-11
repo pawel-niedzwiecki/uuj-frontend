@@ -14,17 +14,11 @@ const HeaderComponent = ({ data }: { data: { menu: DisplayMenuType; contact: Dis
 
   useEffect(() => {
     let lastScrollTop = 0;
-    let saveSwitchMenu = setTimeout(() => {}, 0);
 
     const switchMenu = (e: Event) => {
       const st = window.pageYOffset || document.documentElement.scrollTop;
-      if (st > lastScrollTop && st > 150) {
-        clearTimeout(saveSwitchMenu);
-        saveSwitchMenu = setTimeout(() => menuContactShow && setMenuContactShow(false), 150);
-      } else {
-        clearTimeout(saveSwitchMenu);
-        saveSwitchMenu = setTimeout(() => !menuContactShow && setMenuContactShow(true), 150);
-      }
+      if (st > lastScrollTop && st > 150) menuContactShow && setMenuContactShow(false);
+      else if (st < 150) !menuContactShow && setMenuContactShow(true);
       lastScrollTop = st <= 0 ? 0 : st;
     };
 
