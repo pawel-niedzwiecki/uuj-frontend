@@ -6,29 +6,53 @@ import { displayHomeOnBackEnd, DisplayHomeType } from "database/home";
 import { displayContactOnBackEnd, DisplayContactType } from "database/contact";
 import { ComponentSliderWithService, ComponentSectionRatingList, ComponentSectionServiceList, ComponentSectionNewsList, ComponentSectionFaq } from "components/templates/section";
 
-function Home({ menuHeader, contactHeader, dataPageHome, categories, newsList }: { menuHeader: DisplayMenuType; contactHeader: DisplayContactType; dataPageHome: DisplayHomeType; categories: DisplayCategoryType; newsList: DisplayNewsListType }) {
+function Home({
+  menuHeader,
+  menuFooterUseful,
+  menuFooterForCustomers,
+  menuFooterForMedia,
+  contact,
+  dataPageHome,
+  newsList,
+}: {
+  menuHeader: DisplayMenuType;
+  menuFooterUseful: DisplayMenuType;
+  menuFooterForCustomers: DisplayMenuType;
+  menuFooterForMedia: DisplayMenuType;
+  contact: DisplayContactType;
+  dataPageHome: DisplayHomeType;
+  categories: DisplayCategoryType;
+  newsList: DisplayNewsListType;
+}) {
   return (
-    <Laout data={{ header: { menu: menuHeader, contact: contactHeader } }}>
-      <ComponentSliderWithService data={{ slider: dataPageHome?.data?.attributes?.slider }} />
-      <ComponentSectionRatingList data={dataPageHome.data?.attributes.raitings} />
-      <ComponentSectionServiceList data={categories.data} />
+    <Laout
+      data={{
+        header: { menu: menuHeader, contact },
+        footer: { socialMedia: contact.data?.attributes.social_media, mainAddress: contact.data?.attributes.main_address, branches: contact.data?.attributes.branches, description: dataPageHome.data?.attributes.description_page, menuFooterUseful, menuFooterForCustomers, menuFooterForMedia },
+      }}
+    >
       <ComponentSectionNewsList data={{ newsList: newsList.data, pagination: false, pageCount: newsList.meta.pagination.pageCount }} />
-      <ComponentSectionFaq data={dataPageHome.data?.attributes.faqs?.data} />
     </Laout>
   );
 }
 
 export async function getStaticProps() {
   const menuHeader: DisplayMenuType = await displayMenu({ name: "header" });
+  const menuFooterUseful: DisplayMenuType = await displayMenu({ name: "useful" });
+  const menuFooterForCustomers: DisplayMenuType = await displayMenu({ name: "for-customers" });
+  const menuFooterForMedia: DisplayMenuType = await displayMenu({ name: "for-media" });
   const dataPageHome: DisplayHomeType = await displayHomeOnBackEnd({ seo: true, faqs: true, slider: true, raitings: true });
-  const contactHeader: DisplayContactType = await displayContactOnBackEnd({ numberPhones: true, email: true });
+  const contact: DisplayContactType = await displayContactOnBackEnd({ numberPhones: true, email: true, socialMedia: true, mainAddress: true, branches: true });
   const categories: DisplayCategoryType = await displayCategory({ cover: true, services: true });
   const newsList: DisplayNewsListType = await displayNewsList({ cover: true, category: true, author: true });
 
   return {
     props: {
       menuHeader,
-      contactHeader,
+      menuFooterUseful,
+      menuFooterForCustomers,
+      menuFooterForMedia,
+      contact,
       dataPageHome,
       categories,
       newsList,
