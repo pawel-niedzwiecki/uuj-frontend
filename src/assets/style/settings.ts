@@ -36,6 +36,7 @@ const settings: MainSettingsTemplate = {
 
   // settings max width
   max_width: "128rem",
+  max_width_half: "64rem",
 };
 
 export default settings;

@@ -15,9 +15,9 @@ export type MainSettingsTemplate = {
   colorDangerBorder: string;
   colorSuccessBorder: string;
   colorSuccessBg: string;
-
   break: { small: string; main: string; big: string };
   breakPoint: { type: string; break: string }[];
   gridCol: number;
   max_width: string;
+  max_width_half: string;
 };

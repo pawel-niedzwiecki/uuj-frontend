@@ -1,9 +1,9 @@
 import { Style } from "util";
 import { List } from "./component.list.style";
 
-export default function ComponentList({ children, type, style }: { children?: any; type: ListTypeEnum; style?: {} }) {
+export default function ComponentList({ children, className, type, style }: { children?: any; className?: string; type: ListTypeEnum; style?: {} }) {
   return (
-    <List type={type} style={style}>
+    <List type={type} style={style} className={className}>
       {children}
     </List>
   );
