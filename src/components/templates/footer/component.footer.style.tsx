@@ -27,8 +27,8 @@ export const Footer = styled.header`
     .logo {
       width: 100%;
       display: flex;
-      padding: ${({ theme }) => theme.break.main} 0;
       justify-content: center;
+      padding: ${({ theme }) => theme.break.main} 0;
 
       @media all and (min-width: 768px) {
         justify-content: flex-start;
@@ -68,15 +68,17 @@ export const Footer = styled.header`
       display: block;
       font-size: 1.2rem;
       text-align: center;
-      padding: ${({ theme }) => theme.break.main} ${({ theme }) => theme.break.big} ${({ theme }) => theme.break.main} 0;
+      padding: ${({ theme }) => theme.break.main} 0;
 
       @media all and (min-width: 768px) {
         text-align: left;
+        padding: ${({ theme }) => theme.break.main} ${({ theme }) => theme.break.big} ${({ theme }) => theme.break.main} 0;
       }
     }
 
     .menu {
       padding-bottom: ${({ theme }) => theme.break.big};
+
       li {
         width: 100%;
         display: flex;
@@ -85,6 +87,7 @@ export const Footer = styled.header`
         @media all and (min-width: 768px) {
           justify-content: flex-start;
         }
+
         h6 {
           padding: ${({ theme }) => theme.break.main} 0;
         }
