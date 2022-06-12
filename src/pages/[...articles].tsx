@@ -1,8 +1,10 @@
 import Laout from "layout/laout.index";
 import styled from "styled-components";
+import { slugFromTitle } from "utils/utils.slug";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { displayMenu, DisplayMenuType } from "database/menu";
 import { displayCategory, DisplayCategoryType } from "database/categories";
-import { displayNewsListOnBackend, DisplayNewsListType, displayListNewsPageOnBackEnd, DisplayListNewsPageType } from "database/news";
+import { displayNewsListOnBackend, DisplayNewsListType, NewsListType, displayListNewsPageOnBackEnd, DisplayListNewsPageType, DataListNewsPageType } from "database/news";
 import { displayContactOnBackEnd, DisplayContactType } from "database/contact";
 import { ComponentSectionNewsList } from "components/templates/section";
 
@@ -16,14 +18,13 @@ const Break = styled.div`
   }
 `;
 
-export default function NewsList({
+function Article({
   menuHeader,
   menuFooterUseful,
   menuFooterForCustomers,
   menuFooterForMedia,
   contact,
   dataListNewsPage,
-  newsList,
 }: {
   menuHeader: DisplayMenuType;
   menuFooterUseful: DisplayMenuType;
@@ -31,10 +32,7 @@ export default function NewsList({
   menuFooterForMedia: DisplayMenuType;
   contact: DisplayContactType;
   dataListNewsPage: DisplayListNewsPageType;
-  categories: DisplayCategoryType;
-  newsList: DisplayNewsListType;
 }) {
-  console.log(newsList);
   return (
     <Laout
       data={{
@@ -43,20 +41,34 @@ export default function NewsList({
       }}
     >
       <Break />
-      <ComponentSectionNewsList data={{ newsList: newsList.data, pagination: true, pageCount: newsList.meta.pagination.pageCount }} />
     </Laout>
   );
 }
 
-export async function getStaticProps() {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const articles: DisplayNewsListType = await displayNewsListOnBackend({});
+
+  const allArticle: any[] = await Promise.all(
+    new Array(articles.meta.pagination.pageCount).fill(undefined).map(async (_: undefined, i: number): Promise<any> => {
+      const articeWithOnlyTitle: DisplayNewsListType = await displayNewsListOnBackend({ page: i });
+      return articeWithOnlyTitle?.data;
+    })
+  );
+
+  return {
+    paths: [].concat.apply([], allArticle).map((item: NewsListType) => `/article/${item.id}/${slugFromTitle(item?.attributes.title)}`),
+    fallback: true,
+  };
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  console.log(context);
   const menuHeader: DisplayMenuType = await displayMenu({ name: "header" });
   const menuFooterUseful: DisplayMenuType = await displayMenu({ name: "useful" });
   const menuFooterForCustomers: DisplayMenuType = await displayMenu({ name: "for-customers" });
   const menuFooterForMedia: DisplayMenuType = await displayMenu({ name: "for-media" });
   const dataListNewsPage: DisplayListNewsPageType = await displayListNewsPageOnBackEnd({ seo: true });
   const contact: DisplayContactType = await displayContactOnBackEnd({ numberPhones: true, email: true, socialMedia: true, mainAddress: true, branches: true });
-  const categories: DisplayCategoryType = await displayCategory({ cover: true, services: true });
-  const newsList: DisplayNewsListType = await displayNewsListOnBackend({ cover: true, category: true, author: true });
 
   return {
     props: {
@@ -66,8 +78,8 @@ export async function getStaticProps() {
       menuFooterForMedia,
       contact,
       dataListNewsPage,
-      categories,
-      newsList,
     },
   };
-}
+};
+
+export default Article;

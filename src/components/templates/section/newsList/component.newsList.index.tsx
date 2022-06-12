@@ -64,7 +64,7 @@ export default function ComponentSectionNewsList({ data }: { data: { newsList: N
             content.map((item: NewsListType, i: number) => {
               return (
                 <Col xs={12} md={6} lg={4} key={i}>
-                  <Link href={`/a/${slugFromTitle(item.attributes.title)}`} passHref>
+                  <Link href={`/article/${item.id}/${slugFromTitle(item.attributes.title)}`} passHref>
                     <a>
                       <Aricle ref={articeRef}>
                         <AricleCover>{item?.attributes?.cover?.data?.attributes?.url && <Image src={item?.attributes?.cover?.data?.attributes?.url} alt={item.attributes.title} width={300} height={200} layout="fill" />}</AricleCover>
