@@ -1,7 +1,7 @@
 import Laout from "layout/laout.index";
 import { displayMenu, DisplayMenuType } from "database/menu";
 import { displayCategory, DisplayCategoryType } from "database/categories";
-import { displayNewsList, DisplayNewsListType } from "database/news";
+import { displayNewsListOnBackend, DisplayNewsListType } from "database/news";
 import { displayHomeOnBackEnd, DisplayHomeType } from "database/home";
 import { displayContactOnBackEnd, DisplayContactType } from "database/contact";
 import { ComponentSliderWithService, ComponentSectionRatingList, ComponentSectionServiceList, ComponentSectionNewsList, ComponentSectionFaq } from "components/templates/section";
@@ -31,7 +31,8 @@ function Home({
         footer: { socialMedia: contact.data?.attributes.social_media, mainAddress: contact.data?.attributes.main_address, branches: contact.data?.attributes.branches, description: dataPageHome.data?.attributes.description_page, menuFooterUseful, menuFooterForCustomers, menuFooterForMedia },
       }}
     >
-      <ComponentSectionNewsList data={{ newsList: newsList.data, pagination: false, pageCount: newsList.meta.pagination.pageCount }} />
+      <div style={{ display: "block", width: "100%", height: "3rem" }}></div>
+      <ComponentSectionNewsList data={{ newsList: newsList.data, pagination: true, pageCount: newsList.meta.pagination.pageCount }} />
     </Laout>
   );
 }
@@ -44,7 +45,7 @@ export async function getStaticProps() {
   const dataPageHome: DisplayHomeType = await displayHomeOnBackEnd({ seo: true, faqs: true, slider: true, raitings: true });
   const contact: DisplayContactType = await displayContactOnBackEnd({ numberPhones: true, email: true, socialMedia: true, mainAddress: true, branches: true });
   const categories: DisplayCategoryType = await displayCategory({ cover: true, services: true });
-  const newsList: DisplayNewsListType = await displayNewsList({ cover: true, category: true, author: true });
+  const newsList: DisplayNewsListType = await displayNewsListOnBackend({ cover: true, category: true, author: true });
 
   return {
     props: {
