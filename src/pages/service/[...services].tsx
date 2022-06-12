@@ -3,9 +3,9 @@ import styled from "styled-components";
 import { slugFromTitle } from "utils/utils.slug";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { displayMenu, DisplayMenuType } from "database/menu";
-import { ComponentSectionArticle } from "components/templates/section";
+
 import { displayContactOnBackEnd, DisplayContactType } from "database/contact";
-import { displayNewsListOnBackend, DisplayNewsListType, NewsListType, displayArticleOnBackend, DisplayArticleType } from "database/news";
+import { displayServicesListOnBackend, DisplayServicesListType, DisplayServiceListType, displayServiceOnBackend, DisplayServiceType } from "database/services";
 
 const Break = styled.div`
   display: block;
@@ -17,20 +17,20 @@ const Break = styled.div`
   }
 `;
 
-function Article({
+function PageService({
   menuHeader,
   menuFooterUseful,
   menuFooterForCustomers,
   menuFooterForMedia,
   contact,
-  article,
+  service,
 }: {
   menuHeader?: DisplayMenuType;
   menuFooterUseful?: DisplayMenuType;
   menuFooterForCustomers?: DisplayMenuType;
   menuFooterForMedia?: DisplayMenuType;
   contact?: DisplayContactType;
-  article?: DisplayArticleType;
+  service?: DisplayServiceType;
 }) {
   return (
     <Laout
@@ -40,34 +40,35 @@ function Article({
       }}
     >
       <Break />
-      <ComponentSectionArticle data={article} />
+      <p>usługa: {service?.data.attributes.title}</p>
     </Laout>
   );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const articles: DisplayNewsListType = await displayNewsListOnBackend({});
+  const services: DisplayServicesListType = await displayServicesListOnBackend({});
 
-  const allArticle: any[] = await Promise.all(
-    new Array(articles.meta.pagination.pageCount).fill(undefined).map(async (_: undefined, i: number): Promise<any> => {
-      const articeWithOnlyTitle: DisplayNewsListType = await displayNewsListOnBackend({ page: i + 1 });
-      return articeWithOnlyTitle?.data;
+  const allService: any[] = await Promise.all(
+    new Array(services.meta.pagination.pageCount).fill(undefined).map(async (_: undefined, i: number): Promise<any> => {
+      const serviceWithOnlyTitle: DisplayServicesListType = await displayServicesListOnBackend({ page: i + 1 });
+      return serviceWithOnlyTitle?.data;
     })
   );
 
   return {
-    paths: [].concat.apply([], allArticle).map((item: NewsListType) => `/article/${item.id}/${slugFromTitle(item.attributes.title)}`),
+    paths: [].concat.apply([], allService).map((item: DisplayServiceListType) => `/service/${item.id}/${slugFromTitle(item.attributes.title)}`),
     fallback: true,
   };
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
+  console.log(context.params);
   const menuHeader: DisplayMenuType | undefined = await displayMenu({ name: "header" });
   const menuFooterUseful: DisplayMenuType | undefined = await displayMenu({ name: "useful" });
   const menuFooterForMedia: DisplayMenuType | undefined = await displayMenu({ name: "for-media" });
   const menuFooterForCustomers: DisplayMenuType | undefined = await displayMenu({ name: "for-customers" });
   const contact: DisplayContactType | undefined = await displayContactOnBackEnd({ numberPhones: true, email: true, socialMedia: true, mainAddress: true, branches: true });
-  const article: DisplayArticleType | undefined = await displayArticleOnBackend({ id: context?.params?.articles?.length ? parseInt(context?.params?.articles[1]) : 1 });
+  const service: DisplayServiceType | undefined = await displayServiceOnBackend({ id: context?.params?.services?.length ? parseInt(context?.params?.services[0]) : 1 });
 
   return {
     props: {
@@ -76,9 +77,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
       menuFooterForMedia,
       menuFooterForCustomers,
       contact,
-      article,
+      service,
     },
   };
 };
 
-export default Article;
+export default PageService;
