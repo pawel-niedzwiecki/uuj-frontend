@@ -18,25 +18,16 @@ const Break = styled.div`
   }
 `;
 
-function Article({
-  menuHeader,
-  menuFooterUseful,
-  menuFooterForCustomers,
-  menuFooterForMedia,
-  contact,
-  dataListNewsPage,
-}: {
-  menuHeader: DisplayMenuType;
-  menuFooterUseful: DisplayMenuType;
-  menuFooterForCustomers: DisplayMenuType;
-  menuFooterForMedia: DisplayMenuType;
-  contact: DisplayContactType;
-  dataListNewsPage: DisplayListNewsPageType;
-}) {
+function Article({ menuHeader, menuFooterUseful, menuFooterForCustomers, menuFooterForMedia, contact }: { menuHeader: DisplayMenuType; menuFooterUseful: DisplayMenuType; menuFooterForCustomers: DisplayMenuType; menuFooterForMedia: DisplayMenuType; contact: DisplayContactType }) {
   return (
-    <>
+    <Laout
+      data={{
+        header: { menu: menuHeader, contact },
+        footer: { socialMedia: contact.data?.attributes.social_media, mainAddress: contact.data?.attributes.main_address, branches: contact.data?.attributes.branches, description: "dataListNewsPage.data?.attributes.description_page", menuFooterUseful, menuFooterForCustomers, menuFooterForMedia },
+      }}
+    >
       <Break />
-    </>
+    </Laout>
   );
 }
 
@@ -61,7 +52,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const menuFooterUseful: DisplayMenuType = await displayMenu({ name: "useful" });
   const menuFooterForCustomers: DisplayMenuType = await displayMenu({ name: "for-customers" });
   const menuFooterForMedia: DisplayMenuType = await displayMenu({ name: "for-media" });
-  const dataListNewsPage: DisplayListNewsPageType = await displayListNewsPageOnBackEnd({ seo: true });
+
   const contact: DisplayContactType = await displayContactOnBackEnd({ numberPhones: true, email: true, socialMedia: true, mainAddress: true, branches: true });
 
   return {
@@ -71,7 +62,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
       menuFooterForCustomers,
       menuFooterForMedia,
       contact,
-      dataListNewsPage,
     },
   };
 };
