@@ -5,19 +5,19 @@ import { DisplayContactType, SocialMediaType, MainAddressType, BranchesType } fr
 
 export default function Laout({
   children,
-  data: { header, footer },
+  data,
 }: {
   children: JSX.Element | JSX.Element[];
-  data: {
-    header: { menu: DisplayMenuType; contact: DisplayContactType };
-    footer?: { socialMedia?: SocialMediaType[]; mainAddress?: MainAddressType; branches?: BranchesType; description?: string | null; menuFooterUseful: DisplayMenuType; menuFooterForCustomers: DisplayMenuType; menuFooterForMedia: DisplayMenuType };
+  data?: {
+    header?: { menu?: DisplayMenuType; contact?: DisplayContactType };
+    footer?: { socialMedia?: SocialMediaType[]; mainAddress?: MainAddressType; branches?: BranchesType; description?: string | null; menuFooterUseful?: DisplayMenuType; menuFooterForCustomers?: DisplayMenuType; menuFooterForMedia?: DisplayMenuType };
   };
 }) {
   return (
     <>
-      <Header data={header} />
+      <Header data={data?.header} />
       {children}
-      <Footer data={footer} />
+      <Footer data={data?.footer} />
     </>
   );
 }

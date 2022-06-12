@@ -12,7 +12,7 @@ import Map from "./component.footer.maps";
 import { Footer, Header, ItemAdress } from "./component.footer.style";
 import { SocialMediaType, MainAddressType, BranchesType, BrancheType } from "database/contact";
 
-const FooterComponent = ({ data }: { data?: { socialMedia?: SocialMediaType[]; mainAddress?: MainAddressType; branches?: BranchesType; description?: string | null; menuFooterUseful: DisplayMenuType; menuFooterForCustomers: DisplayMenuType; menuFooterForMedia: DisplayMenuType } }) => {
+const FooterComponent = ({ data }: { data?: { socialMedia?: SocialMediaType[]; mainAddress?: MainAddressType; branches?: BranchesType; description?: string | null; menuFooterUseful?: DisplayMenuType; menuFooterForCustomers?: DisplayMenuType; menuFooterForMedia?: DisplayMenuType } }) => {
   return (
     <>
       <Footer>
@@ -163,7 +163,7 @@ const FooterComponent = ({ data }: { data?: { socialMedia?: SocialMediaType[]; m
                     <li>
                       <h6>PRZYDATNE</h6>
                     </li>
-                    {data?.menuFooterUseful.data?.menu.items &&
+                    {!!data?.menuFooterUseful?.data?.menu?.items &&
                       data?.menuFooterUseful.data?.menu.items.map((item: MenuItemType, index: number) => {
                         return (
                           <li key={index}>
@@ -180,7 +180,7 @@ const FooterComponent = ({ data }: { data?: { socialMedia?: SocialMediaType[]; m
                     <li>
                       <h6>DLA KLIENTÓW</h6>
                     </li>
-                    {data?.menuFooterForCustomers.data?.menu.items &&
+                    {!!data?.menuFooterForCustomers?.data?.menu?.items &&
                       data?.menuFooterForCustomers.data?.menu.items.map((item: MenuItemType, index: number) => {
                         return (
                           <li key={index}>
@@ -197,7 +197,7 @@ const FooterComponent = ({ data }: { data?: { socialMedia?: SocialMediaType[]; m
                     <li>
                       <h6>DLA MEDIÓW</h6>
                     </li>
-                    {data?.menuFooterForMedia.data?.menu.items &&
+                    {!!data?.menuFooterForMedia?.data?.menu?.items &&
                       data?.menuFooterForMedia.data?.menu.items.map((item: MenuItemType, index: number) => {
                         return (
                           <li key={index}>

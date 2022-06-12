@@ -7,7 +7,7 @@ import { Header, Form, Menu, MenuItem, BoxContact, Hambuger } from "./index.head
 import { SearchEngine } from "components/orgamis/form/component.form.index";
 import { Container, Row, Col } from "components/orgamis/flexboxgrid/index.flexboxgrid";
 
-const HeaderComponent = ({ data }: { data: { menu: DisplayMenuType; contact: DisplayContactType } }) => {
+const HeaderComponent = ({ data }: { data?: { menu?: DisplayMenuType; contact?: DisplayContactType } }) => {
   const [menuPower, setMenuPower] = useState(false);
   const [menuContactShow, setMenuContactShow] = useState(true);
 
@@ -51,32 +51,33 @@ const HeaderComponent = ({ data }: { data: { menu: DisplayMenuType; contact: Dis
               </Hambuger>
 
               <Menu menuPower={menuPower}>
-                {data.menu.data?.menu.items.map((item) => {
-                  return (
-                    <MenuItem key={item.id}>
-                      <Link href={item.url}>
-                        {item.target ? (
-                          <a target={item.target} title={item.title}>
-                            {item.title}
-                          </a>
-                        ) : (
-                          <a title={item.title}>{item.title}</a>
-                        )}
-                      </Link>
-                    </MenuItem>
-                  );
-                })}
+                {data?.menu?.data?.menu?.items &&
+                  data?.menu?.data?.menu?.items.map((item) => {
+                    return (
+                      <MenuItem key={item.id}>
+                        <Link href={item.url}>
+                          {item.target ? (
+                            <a target={item.target} title={item.title}>
+                              {item.title}
+                            </a>
+                          ) : (
+                            <a title={item.title}>{item.title}</a>
+                          )}
+                        </Link>
+                      </MenuItem>
+                    );
+                  })}
               </Menu>
             </Col>
             <Col xs={12} className="col">
-              <BoxContact href={`tel:${data.contact.data?.attributes.number_phones?.data[0].attributes.number_phone}`} power={menuContactShow}>
-                {data.contact.data?.attributes.number_phones?.data[0].attributes.number_phone}
+              <BoxContact href={`tel:${data?.contact?.data?.attributes?.number_phones?.data[0].attributes?.number_phone}`} power={menuContactShow}>
+                {data?.contact?.data?.attributes?.number_phones?.data[0].attributes?.number_phone}
               </BoxContact>
-              <BoxContact href={`mailto:${data.contact.data?.attributes.e_mail?.data.attributes.email}`} power={menuContactShow}>
-                {data.contact.data?.attributes.e_mail?.data.attributes.email}
+              <BoxContact href={`mailto:${data?.contact?.data?.attributes?.e_mail?.data?.attributes?.email}`} power={menuContactShow}>
+                {data?.contact?.data?.attributes?.e_mail?.data?.attributes?.email}
               </BoxContact>
-              <BoxContact href={`tel:${data.contact.data?.attributes.number_phones?.data[1].attributes.number_phone}`} power={menuContactShow}>
-                {data.contact.data?.attributes.number_phones?.data[1].attributes.number_phone}
+              <BoxContact href={`tel:${data?.contact?.data?.attributes?.number_phones?.data[1].attributes?.number_phone}`} power={menuContactShow}>
+                {data?.contact?.data?.attributes?.number_phones?.data[1].attributes?.number_phone}
               </BoxContact>
             </Col>
           </Row>
