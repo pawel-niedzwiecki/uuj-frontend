@@ -10,7 +10,7 @@ import { displayNewsListOnBackend, DisplayNewsListType, NewsListType, displayArt
 const Break = styled.div`
   display: block;
   width: 100%;
-  height: 14rem;
+  height: 22rem;
 
   @media all and (min-width: 768px) {
     height: 12rem;

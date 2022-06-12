@@ -12,7 +12,6 @@ export const Article: StyledComponent<any, any> = styled.article`
   width: 100%;
   overflow: hidden;
   position: relative;
-  border-radius: 0.6rem;
   margin-bottom: ${({ theme }: ThemeProps<MainSettingsTemplate>): string => theme.break.big};
   background-color: ${({ theme }: ThemeProps<MainSettingsTemplate>): string => theme.colorPostPrimmaryBg};
 `;
@@ -86,13 +85,10 @@ export const Title: StyledComponent<any, any> = styled.h1`
   display: flex;
   width: max-content;
   position: relative;
-
-  span {
-    opacity: 0.3;
-  }
+  padding: 0 ${({ theme }: ThemeProps<MainSettingsTemplate>): string => theme.break.main};
 
   @media all and (min-width: 768px) {
-    padding: ${({ tag }: { tag?: boolean }): string => (tag ? "0" : "1.5rem 6.5rem")};
+    padding: ${({ theme }: ThemeProps<MainSettingsTemplate>): string => theme.break.main} 6.5rem;
   }
 `;
 
@@ -100,6 +96,7 @@ export const Content: StyledComponent<any, any> = styled.div`
   padding: 0;
   max-width: 100%;
   position: relative;
+  padding: 0 ${({ theme }: ThemeProps<MainSettingsTemplate>): string => theme.break.main};
 
   @media all and (min-width: 768px) {
     padding: 0 6.5rem;
