@@ -2,7 +2,7 @@ import Laout from "layout/laout.index";
 import { displayMenu, DisplayMenuType } from "database/menu";
 import { displayCategory, DisplayCategoryType } from "database/categories";
 import { displayNewsListOnBackend, DisplayNewsListType } from "database/news";
-import { displayHomeOnBackEnd, DisplayHomeType } from "database/home";
+import { displayHomePageOnBackEnd, DisplayHomeType } from "database/home";
 import { displayContactOnBackEnd, DisplayContactType } from "database/contact";
 import { ComponentSliderWithService, ComponentSectionRatingList, ComponentSectionServiceList, ComponentSectionNewsList, ComponentSectionFaq } from "components/templates/section";
 
@@ -46,7 +46,7 @@ export async function getStaticProps() {
   const menuFooterUseful: DisplayMenuType = await displayMenu({ name: "useful" });
   const menuFooterForCustomers: DisplayMenuType = await displayMenu({ name: "for-customers" });
   const menuFooterForMedia: DisplayMenuType = await displayMenu({ name: "for-media" });
-  const dataPageHome: DisplayHomeType = await displayHomeOnBackEnd({ seo: true, faqs: true, slider: true, raitings: true });
+  const dataPageHome: DisplayHomeType = await displayHomePageOnBackEnd({ seo: true, faqs: true, slider: true, raitings: true });
   const contact: DisplayContactType = await displayContactOnBackEnd({ numberPhones: true, email: true, socialMedia: true, mainAddress: true, branches: true });
   const categories: DisplayCategoryType = await displayCategory({ cover: true, services: true });
   const newsList: DisplayNewsListType = await displayNewsListOnBackend({ cover: true, category: true, author: true });

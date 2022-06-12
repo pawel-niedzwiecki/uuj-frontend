@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import time from "utils/utils.time";
+
 import { slugFromTitle } from "utils/utils.slug";
 import useWindowData from "hooks/hooks.windowData";
 import { useEffect, useState, useRef } from "react";
