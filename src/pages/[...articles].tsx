@@ -3,8 +3,9 @@ import styled from "styled-components";
 import { slugFromTitle } from "utils/utils.slug";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { displayMenu, DisplayMenuType } from "database/menu";
+import { ComponentSectionArticle } from "components/templates/section";
 import { displayContactOnBackEnd, DisplayContactType } from "database/contact";
-import { displayNewsListOnBackend, DisplayNewsListType, NewsListType } from "database/news";
+import { displayNewsListOnBackend, DisplayNewsListType, NewsListType, displayArticleOnBackend, DisplayArticleType } from "database/news";
 
 const Break = styled.div`
   display: block;
@@ -12,11 +13,25 @@ const Break = styled.div`
   height: 14rem;
 
   @media all and (min-width: 768px) {
-    height: 3rem;
+    height: 12rem;
   }
 `;
 
-function Article({ menuHeader, menuFooterUseful, menuFooterForCustomers, menuFooterForMedia, contact }: { menuHeader?: DisplayMenuType; menuFooterUseful?: DisplayMenuType; menuFooterForCustomers?: DisplayMenuType; menuFooterForMedia?: DisplayMenuType; contact?: DisplayContactType }) {
+function Article({
+  menuHeader,
+  menuFooterUseful,
+  menuFooterForCustomers,
+  menuFooterForMedia,
+  contact,
+  article,
+}: {
+  menuHeader?: DisplayMenuType;
+  menuFooterUseful?: DisplayMenuType;
+  menuFooterForCustomers?: DisplayMenuType;
+  menuFooterForMedia?: DisplayMenuType;
+  contact?: DisplayContactType;
+  article?: DisplayArticleType;
+}) {
   return (
     <Laout
       data={{
@@ -25,6 +40,7 @@ function Article({ menuHeader, menuFooterUseful, menuFooterForCustomers, menuFoo
       }}
     >
       <Break />
+      <ComponentSectionArticle data={article} />
     </Laout>
   );
 }
@@ -51,6 +67,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const menuFooterForMedia: DisplayMenuType | undefined = await displayMenu({ name: "for-media" });
   const menuFooterForCustomers: DisplayMenuType | undefined = await displayMenu({ name: "for-customers" });
   const contact: DisplayContactType | undefined = await displayContactOnBackEnd({ numberPhones: true, email: true, socialMedia: true, mainAddress: true, branches: true });
+  const article: DisplayArticleType | undefined = await displayArticleOnBackend({ id: context?.params?.articles?.length ? parseInt(context?.params?.articles[1]) : 1 });
 
   return {
     props: {
@@ -59,6 +76,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       menuFooterForMedia,
       menuFooterForCustomers,
       contact,
+      article,
     },
   };
 };

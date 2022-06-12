@@ -34,7 +34,6 @@ export default function NewsList({
   categories: DisplayCategoryType;
   newsList: DisplayNewsListType;
 }) {
-  console.log(newsList);
   return (
     <Laout
       data={{
