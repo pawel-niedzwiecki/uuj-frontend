@@ -23,13 +23,15 @@ export default function ComponentSectionNewsList({ data }: { data: { newsList: N
       clearTimeout(check);
       check = setTimeout(() => {
         const heightEl: any = articeRef?.current?.getBoundingClientRect().y;
-        if (data.pageCount > pageActive && !iAmWaitingForAnswer && heightEl - height < 0) setIamWaitingForAnswer(true);
+        if (data.pagination && data.pageCount > pageActive && !iAmWaitingForAnswer && heightEl - height < 0) setIamWaitingForAnswer(true);
       }, 200);
     }
 
-    document.addEventListener("scroll", loadArticle);
+    data?.pagination && document.addEventListener("scroll", loadArticle);
 
-    return () => document.removeEventListener("scroll", loadArticle);
+    return () => {
+      data?.pagination && document.removeEventListener("scroll", loadArticle);
+    };
   }, [content, data, pageActive, height, iAmWaitingForAnswer]);
 
   useEffect(() => {
