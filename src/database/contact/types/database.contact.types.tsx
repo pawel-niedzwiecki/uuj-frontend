@@ -1,3 +1,11 @@
+export type Seo =
+  | {
+      id: number;
+      title: string;
+      description: string;
+    }
+  | undefined;
+
 export type NumberPhonesType = {
   data: {
     id: number;
@@ -106,16 +114,33 @@ export type BranchesType = {
   data: BrancheType[];
 };
 
+export interface FaqType {
+  id: 1;
+  attributes: {
+    title: string;
+    content: string;
+    createdAt: Date;
+    updatedAt: Date;
+  };
+}
+
+export interface FaqsType {
+  data: FaqType[];
+}
+
 export type DataType = null | {
   id: number;
   attributes: {
+    seo?: Seo;
     createdAt: Date;
     updatedAt: Date;
-    number_phones?: NumberPhonesType;
+    faqs?: FaqsType;
     e_mail?: EmailType;
-    social_media?: SocialMediaType[];
-    main_address?: MainAddressType;
     branches?: BranchesType;
+    main_address?: MainAddressType;
+    description_page: null | string;
+    social_media?: SocialMediaType[];
+    number_phones?: NumberPhonesType;
   };
 
   meta?: {};

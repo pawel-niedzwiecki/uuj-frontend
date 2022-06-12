@@ -1,4 +1,4 @@
-export const displayHomeState = {
+export const displayListNewsPageState = {
   data: {
     id: 1,
     attributes: {
