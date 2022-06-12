@@ -18,7 +18,21 @@ const Break = styled.div`
   }
 `;
 
-function Article({ menuHeader, menuFooterUseful, menuFooterForCustomers, menuFooterForMedia }: { menuHeader: DisplayMenuType; menuFooterUseful: DisplayMenuType; menuFooterForCustomers: DisplayMenuType; menuFooterForMedia: DisplayMenuType }) {
+function Article({
+  menuHeader,
+  menuFooterUseful,
+  menuFooterForCustomers,
+  menuFooterForMedia,
+  contact,
+  dataListNewsPage,
+}: {
+  menuHeader: DisplayMenuType;
+  menuFooterUseful: DisplayMenuType;
+  menuFooterForCustomers: DisplayMenuType;
+  menuFooterForMedia: DisplayMenuType;
+  contact: DisplayContactType;
+  dataListNewsPage: DisplayListNewsPageType;
+}) {
   return (
     <>
       <Break />
@@ -47,6 +61,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const menuFooterUseful: DisplayMenuType = await displayMenu({ name: "useful" });
   const menuFooterForCustomers: DisplayMenuType = await displayMenu({ name: "for-customers" });
   const menuFooterForMedia: DisplayMenuType = await displayMenu({ name: "for-media" });
+  const dataListNewsPage: DisplayListNewsPageType = await displayListNewsPageOnBackEnd({ seo: true });
+  const contact: DisplayContactType = await displayContactOnBackEnd({ numberPhones: true, email: true, socialMedia: true, mainAddress: true, branches: true });
 
   return {
     props: {
@@ -54,6 +70,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
       menuFooterUseful,
       menuFooterForCustomers,
       menuFooterForMedia,
+      contact,
+      dataListNewsPage,
     },
   };
 };
