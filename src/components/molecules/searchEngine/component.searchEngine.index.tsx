@@ -37,24 +37,24 @@ export default function ComponentSearchEngine({ id, name, placeholder }: InputIn
       </ButtonSearch>
       {(!!searchResult?.data?.news?.length || !!searchResult?.data?.services?.length) && !!searchQuery?.length && focus && (
         <SearchResultBox>
-          {!!searchResult?.data?.news?.length && (
+          {!!searchResult?.data?.services?.length && (
             <>
-              <SearchResultItemHeader>Wiadomości</SearchResultItemHeader>
-              {searchResult?.data?.news.map((item: { id: number; title: string }): JSX.Element => {
+              <SearchResultItemHeader>Usługi</SearchResultItemHeader>
+              {searchResult?.data?.services.map((item: { id: number; title: string }): JSX.Element => {
                 return (
-                  <Link href={`/s/${slugFromTitle(item.title)}`} passHref key={item.id}>
+                  <Link href={`/service/${item.id}/${slugFromTitle(item.title)}`} passHref key={item.id}>
                     <SearchResultItem>{item.title}</SearchResultItem>
                   </Link>
                 );
               })}
             </>
           )}
-          {!!searchResult?.data?.services?.length && (
+          {!!searchResult?.data?.news?.length && (
             <>
-              <SearchResultItemHeader>Usługi</SearchResultItemHeader>
-              {searchResult?.data?.services.map((item: { id: number; title: string }): JSX.Element => {
+              <SearchResultItemHeader>Wiadomości</SearchResultItemHeader>
+              {searchResult?.data?.news.map((item: { id: number; title: string }): JSX.Element => {
                 return (
-                  <Link href={`/s/${slugFromTitle(item.title)}`} passHref key={item.id}>
+                  <Link href={`/article/${item.id}/${slugFromTitle(item.title)}`} passHref key={item.id}>
                     <SearchResultItem>{item.title}</SearchResultItem>
                   </Link>
                 );
