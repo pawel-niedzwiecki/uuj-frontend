@@ -10,8 +10,9 @@ import { Section, Header, Title, AllRating, MeanRating, RatingBox, RatingTitle, 
 import { Rating, Ratings } from "database/home";
 import { countRaitings } from "utils/utils.ratings";
 
-export default function ComponentSectionRatingList({ data }: { data: Ratings | undefined }): JSX.Element {
-  const countRatingsAll = countRaitings({ ratings: data?.ratings.data });
+export default function ComponentSectionRatingList({ data }: { data?: Ratings | undefined }): JSX.Element {
+  console.log(data?.cover);
+  const countRatingsAll = countRaitings({ ratings: data?.ratings?.data });
   let newArray: Rating[][] = [];
   new Array(Math.round(countRatingsAll.count / 3)).fill(undefined).forEach((_, i) => data?.ratings?.data && newArray.push(data?.ratings.data.slice(i * 3, i * 3 + 3)));
 

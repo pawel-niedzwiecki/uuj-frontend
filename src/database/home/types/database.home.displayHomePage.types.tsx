@@ -174,7 +174,7 @@ export type Data = null | {
     updatedAt: Date;
     slider?: Slider;
     faqs?: FaqsType;
-    raitings?: Ratings;
+    ratings?: Ratings;
     description_page: null | string;
   };
   meta?: {};

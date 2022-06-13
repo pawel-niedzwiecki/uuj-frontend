@@ -33,7 +33,7 @@ function Home({
       }}
     >
       <ComponentSliderWithService data={{ slider: dataPageHome?.data?.attributes?.slider }} />
-      <ComponentSectionRatingList data={dataPageHome.data?.attributes.raitings} />
+      <ComponentSectionRatingList data={dataPageHome.data?.attributes.ratings} />
       <ComponentSectionServiceList data={categories.data} />
       <ComponentSectionNewsList data={{ newsList: newsList.data, pagination: false, pageCount: newsList.meta.pagination.pageCount }} />
       <ComponentSectionFaq data={dataPageHome.data?.attributes.faqs?.data} />
@@ -46,7 +46,7 @@ export async function getStaticProps() {
   const menuFooterUseful: DisplayMenuType = await displayMenu({ name: "useful" });
   const menuFooterForCustomers: DisplayMenuType = await displayMenu({ name: "for-customers" });
   const menuFooterForMedia: DisplayMenuType = await displayMenu({ name: "for-media" });
-  const dataPageHome: DisplayHomeType = await displayHomePageOnBackEnd({ seo: true, faqs: true, slider: true, raitings: true });
+  const dataPageHome: DisplayHomeType = await displayHomePageOnBackEnd({ seo: true, faqs: true, slider: true, ratings: true });
   const contact: DisplayContactType = await displayContactOnBackEnd({ numberPhones: true, email: true, socialMedia: true, mainAddress: true, branches: true });
   const categories: DisplayCategoryType = await displayCategory({ cover: true, services: true });
   const newsList: DisplayNewsListType = await displayNewsListOnBackend({ cover: true, category: true, author: true });
