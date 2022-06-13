@@ -32,7 +32,7 @@ export default function ComponentSectionServiceList({ data }: { data: CategoryTy
                           ? item?.attributes?.services?.data.map((service: ServiceType, i: number): JSX.Element => {
                               return (
                                 <li key={i}>
-                                  <Link href={`/s/${slugFromTitle(service.attributes.title)}`}>
+                                  <Link href={`/service/${service.id}/${slugFromTitle(service.attributes.title)}`}>
                                     <a title={service.attributes.title}>
                                       <span>#</span>
                                       {service.attributes.title}

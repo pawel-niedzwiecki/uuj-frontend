@@ -11,6 +11,7 @@ const settings: MainSettingsTemplate = {
   colorLinkActiveSecound: "#000",
   colorPrimmaryBg: "#FFF",
   colorSecoundBg: "#FFCC00",
+  colorTertiaryBg: "#000",
   colorBorder: "#000",
   colorButtonBg: "#000",
   colorPostPrimmaryBg: "#CCC",

@@ -63,6 +63,46 @@ export type ImageType = {
   };
 };
 
+export type BranchServiceType = {
+  data: {
+    id: number;
+    attributes: {
+      title: string;
+      street: string;
+      street_number: string;
+      post_code: string;
+      city: string;
+      nip: string;
+      regon: string;
+      createdAt: Date;
+      updatedAt: Date;
+      number_phone?: {
+        data: {
+          id: number;
+          attributes: {
+            number_phone: string;
+            createdAt: Date;
+            updatedAt: Date;
+          };
+        };
+      };
+      lat: number;
+      lng: number;
+    };
+  };
+};
+
+export type AdvantageServiceType = {
+  id: number;
+  icon: string;
+  title: string;
+  content: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+export type AdvantagesServiceType = AdvantageServiceType[];
+
 export interface DisplayServiceType {
   data: {
     id: number;
@@ -75,29 +115,8 @@ export interface DisplayServiceType {
       createdAt: Date;
       updatedAt: Date;
       cover?: ImageType;
-      Advantages?: {
-        id: number;
-        icon: string;
-        content: string;
-      }[];
-      branch?: {
-        data: {
-          id: number;
-          attributes: {
-            title: string;
-            street: string;
-            street_number: string;
-            post_code: string;
-            city: string;
-            nip: string;
-            regon: string;
-            createdAt: Date;
-            updatedAt: Date;
-            lat: number;
-            lng: number;
-          };
-        };
-      };
+      Advantages?: AdvantagesServiceType;
+      branch?: BranchServiceType;
       faqs?: {
         data: {
           id: number;

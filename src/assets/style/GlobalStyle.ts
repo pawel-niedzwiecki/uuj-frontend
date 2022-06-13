@@ -65,7 +65,7 @@ const GlobalStyle = styled.createGlobalStyle<GlobalStyleProps>`
   }
 
   h1 {
-    font-size: 3.8rem;
+    font-size: 4.2rem;
   }
 
   h2 {

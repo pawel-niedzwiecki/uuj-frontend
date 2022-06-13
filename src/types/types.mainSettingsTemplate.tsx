@@ -8,6 +8,7 @@ export type MainSettingsTemplate = {
   colorLinkActiveSecound: string;
   colorPrimmaryBg: string;
   colorSecoundBg: string;
+  colorTertiaryBg: string;
   colorBorder: string;
   colorButtonBg: string;
   colorPostPrimmaryBg: string;

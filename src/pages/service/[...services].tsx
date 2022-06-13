@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { slugFromTitle } from "utils/utils.slug";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { displayMenu, DisplayMenuType } from "database/menu";
-
+import { ComponentSectionServiceHeader } from "components/templates/section";
 import { displayContactOnBackEnd, DisplayContactType } from "database/contact";
 import { displayServicesListOnBackend, DisplayServicesListType, DisplayServiceListType, displayServiceOnBackend, DisplayServiceType } from "database/services";
 
@@ -13,7 +13,7 @@ const Break = styled.div`
   height: 22rem;
 
   @media all and (min-width: 768px) {
-    height: 12rem;
+    height: 11rem;
   }
 `;
 
@@ -40,6 +40,7 @@ function PageService({
       }}
     >
       <Break />
+      <ComponentSectionServiceHeader data={{ title: service?.data.attributes.title, adress: service?.data.attributes.branch, advantages: service?.data.attributes.Advantages }} />
       <p>usługa: {service?.data.attributes.title}</p>
     </Laout>
   );
@@ -62,7 +63,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  console.log(context.params);
   const menuHeader: DisplayMenuType | undefined = await displayMenu({ name: "header" });
   const menuFooterUseful: DisplayMenuType | undefined = await displayMenu({ name: "useful" });
   const menuFooterForMedia: DisplayMenuType | undefined = await displayMenu({ name: "for-media" });
