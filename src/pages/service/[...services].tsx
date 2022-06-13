@@ -4,7 +4,7 @@ import { slugFromTitle } from "utils/utils.slug";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { displayMenu, DisplayMenuType } from "database/menu";
 import { displayContactOnBackEnd, DisplayContactType } from "database/contact";
-import { ComponentSectionRatingList, ComponentSectionServiceHeader, ComponentSectionAboutOurOffice, ComponentSectionWyWe } from "components/templates/section";
+import { ComponentSectionRatingList, ComponentSectionServiceHeader, ComponentSectionAboutOurOffice, ComponentSectionWyWe, ComponentSectionWhatWeCanForYouMade, ComponentSectionFaq } from "components/templates/section";
 import { displayServicesListOnBackend, DisplayServicesListType, DisplayServiceListType, displayServiceOnBackend, DisplayServiceType } from "database/services";
 
 const Break = styled.div`
@@ -44,8 +44,9 @@ function PageService({
       <ComponentSectionServiceHeader data={{ title: service?.data.attributes.title, adress: service?.data.attributes.branch, advantages: service?.data.attributes.Advantages }} />
       <ComponentSectionAboutOurOffice data={{ branch: service?.data.attributes.branch, title: service?.data.attributes.title, about: service?.data.attributes.about_headquarter }} />
       <ComponentSectionRatingList data={service?.data?.attributes?.ratings} />
-      <ComponentSectionWyWe data={{ title: service?.data.attributes.title, description: service?.data.attributes.why_we, cover: service?.data?.attributes?.cover }} />
-      <p>usługa: {service?.data.attributes.title}</p>
+      <ComponentSectionWyWe data={{ title: service?.data.attributes.title, description: service?.data.attributes.why_we, cover: service?.data?.attributes?.why_we_cover }} />
+      <ComponentSectionWhatWeCanForYouMade data={{ city: service?.data.attributes.branch?.data.attributes.city, description: service?.data.attributes.what_we_can_for_you_made, cover: service?.data?.attributes?.what_we_can_for_you_made_cover }} />
+      <ComponentSectionFaq data={service?.data?.attributes?.faqs?.data} />
     </Laout>
   );
 }

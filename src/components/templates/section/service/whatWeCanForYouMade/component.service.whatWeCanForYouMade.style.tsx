@@ -31,9 +31,8 @@ export const ImageBox = styled.div`
 export const DescriptionBox = styled.div`
   width: 100%;
   display: block;
+  text-align: left;
   position: relative;
-  text-align: justify;
-  text-justify: inter-word;
   padding-top: ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.big};
 
   h1,

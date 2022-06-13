@@ -1,4 +1,4 @@
-import type { RatingType, RatingsType } from "database/home";
+import type { RatingType, RatingsType, FaqsType } from "database/home";
 
 export type Error = {
   status: number;
@@ -121,17 +121,7 @@ export interface DisplayServiceType {
       cover?: ImageType;
       Advantages?: AdvantagesServiceType;
       branch?: BranchServiceType;
-      faqs?: {
-        data: {
-          id: number;
-          attributes: {
-            title: string;
-            content: string;
-            createdAt: Date;
-            updatedAt: Date;
-          };
-        }[];
-      };
+      faqs?: FaqsType;
       ratings?: RatingsType;
       category?: {
         data: {
@@ -145,12 +135,6 @@ export interface DisplayServiceType {
           };
         };
       };
-      history?: {
-        id: number;
-        date: string;
-        title: string;
-        content: string;
-      }[];
     };
   };
   meta: {};
