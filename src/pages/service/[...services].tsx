@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { slugFromTitle } from "utils/utils.slug";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { displayMenu, DisplayMenuType } from "database/menu";
-import { ComponentSectionServiceHeader } from "components/templates/section";
+import { ComponentSectionServiceHeader, ComponentSectionAboutOurOffice } from "components/templates/section";
 import { displayContactOnBackEnd, DisplayContactType } from "database/contact";
 import { displayServicesListOnBackend, DisplayServicesListType, DisplayServiceListType, displayServiceOnBackend, DisplayServiceType } from "database/services";
 
@@ -41,6 +41,7 @@ function PageService({
     >
       <Break />
       <ComponentSectionServiceHeader data={{ title: service?.data.attributes.title, adress: service?.data.attributes.branch, advantages: service?.data.attributes.Advantages }} />
+      <ComponentSectionAboutOurOffice data={{ branch: service?.data.attributes.branch, title: service?.data.attributes.title, about: service?.data.attributes.about_headquarter }} />
       <p>usługa: {service?.data.attributes.title}</p>
     </Laout>
   );
