@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { slugFromTitle } from "utils/utils.slug";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { displayMenu, DisplayMenuType } from "database/menu";
-import { ComponentSectionRatingList, ComponentSectionServiceHeader, ComponentSectionAboutOurOffice } from "components/templates/section";
 import { displayContactOnBackEnd, DisplayContactType } from "database/contact";
+import { ComponentSectionRatingList, ComponentSectionServiceHeader, ComponentSectionAboutOurOffice, ComponentSectionWyWe } from "components/templates/section";
 import { displayServicesListOnBackend, DisplayServicesListType, DisplayServiceListType, displayServiceOnBackend, DisplayServiceType } from "database/services";
 
 const Break = styled.div`
@@ -32,6 +32,7 @@ function PageService({
   contact?: DisplayContactType;
   service?: DisplayServiceType;
 }) {
+  console.log(service);
   return (
     <Laout
       data={{
@@ -43,7 +44,7 @@ function PageService({
       <ComponentSectionServiceHeader data={{ title: service?.data.attributes.title, adress: service?.data.attributes.branch, advantages: service?.data.attributes.Advantages }} />
       <ComponentSectionAboutOurOffice data={{ branch: service?.data.attributes.branch, title: service?.data.attributes.title, about: service?.data.attributes.about_headquarter }} />
       <ComponentSectionRatingList data={service?.data?.attributes?.ratings} />
-
+      <ComponentSectionWyWe data={{ title: service?.data.attributes.title, description: service?.data.attributes.why_we, cover: service?.data?.attributes?.cover }} />
       <p>usługa: {service?.data.attributes.title}</p>
     </Laout>
   );
@@ -66,12 +67,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const menuHeader: DisplayMenuType | undefined = await displayMenu({ name: "header" });
-  const menuFooterUseful: DisplayMenuType | undefined = await displayMenu({ name: "useful" });
-  const menuFooterForMedia: DisplayMenuType | undefined = await displayMenu({ name: "for-media" });
-  const menuFooterForCustomers: DisplayMenuType | undefined = await displayMenu({ name: "for-customers" });
-  const contact: DisplayContactType | undefined = await displayContactOnBackEnd({ numberPhones: true, email: true, socialMedia: true, mainAddress: true, branches: true });
-  const service: DisplayServiceType | undefined = await displayServiceOnBackend({ id: context?.params?.services?.length ? parseInt(context?.params?.services[0]) : 1 });
+  const menuHeader: DisplayMenuType = await displayMenu({ name: "header" });
+  const menuFooterUseful: DisplayMenuType = await displayMenu({ name: "useful" });
+  const menuFooterForMedia: DisplayMenuType = await displayMenu({ name: "for-media" });
+  const menuFooterForCustomers: DisplayMenuType = await displayMenu({ name: "for-customers" });
+  const contact: DisplayContactType = await displayContactOnBackEnd({ numberPhones: true, email: true, socialMedia: true, mainAddress: true, branches: true });
+  const service: DisplayServiceType = await displayServiceOnBackend({ id: context?.params?.services?.length ? parseInt(context?.params?.services[0]) : 1 });
 
   return {
     props: {

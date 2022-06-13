@@ -28,7 +28,7 @@ export type Slide = {
 
 export type Slider = { data: Slide[] | undefined };
 
-export type Rating = {
+export type RatingType = {
   id: number;
   attributes: {
     from: string;
@@ -37,7 +37,7 @@ export type Rating = {
     content: string;
     createdAt: Date;
     updatedAt: Date;
-    cover: {
+    cover?: {
       data: {
         id: 3;
         attributes: {
@@ -108,11 +108,11 @@ export type Rating = {
   };
 };
 
-export type Ratings = {
+export type RatingsType = {
   id: number;
   title: string;
-  ratings: {
-    data: Rating[];
+  ratings?: {
+    data?: RatingType[];
   };
 
   cover: {
@@ -174,7 +174,7 @@ export type Data = null | {
     updatedAt: Date;
     slider?: Slider;
     faqs?: FaqsType;
-    ratings?: Ratings;
+    ratings?: RatingsType;
     description_page: null | string;
   };
   meta?: {};

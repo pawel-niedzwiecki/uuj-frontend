@@ -7,13 +7,12 @@ import { Carousel } from "react-responsive-carousel";
 import HalfStarBlack from "assets/icon/halfStarBlack.svg";
 import { Container, Row, Col } from "components/orgamis/flexboxgrid/index.flexboxgrid";
 import { Section, Header, Title, AllRating, MeanRating, RatingBox, RatingTitle, RatingContent, RatingFaceAuthor, RatingAuthorDataBox, RatingAuthorName, RatingDateAdds, RatingAuthor } from "./component.ratingList.style";
-import { Rating, Ratings } from "database/home";
+import { RatingType, RatingsType } from "database/home";
 import { countRaitings } from "utils/utils.ratings";
 
-export default function ComponentSectionRatingList({ data }: { data?: Ratings | undefined }): JSX.Element {
-  console.log(data?.cover);
+export default function ComponentSectionRatingList({ data }: { data?: RatingsType }): JSX.Element {
   const countRatingsAll = countRaitings({ ratings: data?.ratings?.data });
-  let newArray: Rating[][] = [];
+  let newArray: RatingType[][] = [];
   new Array(Math.round(countRatingsAll.count / 3)).fill(undefined).forEach((_, i) => data?.ratings?.data && newArray.push(data?.ratings.data.slice(i * 3, i * 3 + 3)));
 
   return (
@@ -51,11 +50,11 @@ export default function ComponentSectionRatingList({ data }: { data?: Ratings | 
           </Col>
           <Col xs={12}>
             <Carousel showArrows={true} showThumbs={false} autoPlay={false} infiniteLoop={true} showStatus={false} showIndicators={false}>
-              {newArray.map((items: Rating[], index: number): any => {
+              {newArray.map((items: RatingType[], index: number): any => {
                 return (
                   <Container key={index}>
                     <Row style={{ justifyContent: "center" }}>
-                      {items.map((item: Rating, i: number): JSX.Element[] | JSX.Element => {
+                      {items.map((item: RatingType, i: number): JSX.Element[] | JSX.Element => {
                         return (
                           <Col xs={12} md={6} lg={4} key={i}>
                             <RatingBox>

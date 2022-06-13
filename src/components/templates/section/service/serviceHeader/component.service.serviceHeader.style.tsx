@@ -34,8 +34,8 @@ export const Section = styled.section`
 export const Title = styled.h1`
   width: 100%;
   display: block;
-  text-align: center;
   position: relative;
+  text-align: center;
   padding-bottom: ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.main};
 `;
 
