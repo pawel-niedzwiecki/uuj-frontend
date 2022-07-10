@@ -40,20 +40,20 @@ const FooterComponent = ({ data }: { data?: { socialMedia?: SocialMediaType[]; m
                         </ItemAdress>
                         <ItemAdress>
                           <p>
-                            {data?.mainAddress?.data.attributes.post_code} {data?.mainAddress?.data.attributes.city}
+                            {data?.mainAddress?.data?.attributes?.post_code} {data?.mainAddress?.data?.attributes?.city}
                           </p>
                         </ItemAdress>
                         {data?.mainAddress?.data?.attributes?.nip && (
                           <ItemAdress>
                             <p>
-                              <b>NIP:</b> {data?.mainAddress?.data.attributes.nip}
+                              <b>NIP:</b> {data?.mainAddress?.data?.attributes?.nip}
                             </p>
                           </ItemAdress>
                         )}
                         {data?.mainAddress?.data?.attributes?.regon && (
                           <ItemAdress>
                             <p>
-                              <b>REGON:</b> {data?.mainAddress?.data.attributes.regon}
+                              <b>REGON:</b> {data?.mainAddress?.data?.attributes?.regon}
                             </p>
                           </ItemAdress>
                         )}
@@ -69,16 +69,16 @@ const FooterComponent = ({ data }: { data?: { socialMedia?: SocialMediaType[]; m
                         <ItemAdress>
                           <p>
                             <b>TEL:</b>
-                            <Link href={`tel:${data?.mainAddress?.data?.attributes?.number_phone.data.attributes.number_phone}`}>
-                              <a> {data?.mainAddress?.data?.attributes?.number_phone.data.attributes.number_phone}</a>
+                            <Link href={`tel:${data?.mainAddress?.data?.attributes?.number_phone?.data?.attributes?.number_phone}`}>
+                              <a> {data?.mainAddress?.data?.attributes?.number_phone?.data?.attributes?.number_phone}</a>
                             </Link>
                           </p>
                         </ItemAdress>
                         <ItemAdress>
                           <p>
                             <b>E-MAIL: </b>
-                            <Link href={`mailto:${data?.mainAddress?.data?.attributes?.e_mail.data.attributes.email}`}>
-                              <a> {data?.mainAddress?.data?.attributes?.e_mail.data.attributes.email}</a>
+                            <Link href={`mailto:${data?.mainAddress?.data?.attributes?.e_mail?.data?.attributes?.email}`}>
+                              <a> {data?.mainAddress?.data?.attributes?.e_mail?.data?.attributes?.email}</a>
                             </Link>
                           </p>
                         </ItemAdress>
@@ -181,7 +181,7 @@ const FooterComponent = ({ data }: { data?: { socialMedia?: SocialMediaType[]; m
                       <h6>DLA KLIENTÓW</h6>
                     </li>
                     {!!data?.menuFooterForCustomers?.data?.menu?.items &&
-                      data?.menuFooterForCustomers.data?.menu.items.map((item: MenuItemType, index: number) => {
+                      data?.menuFooterForCustomers?.data?.menu.items.map((item: MenuItemType, index: number) => {
                         return (
                           <li key={index}>
                             <Link href={item.url}>
@@ -198,7 +198,7 @@ const FooterComponent = ({ data }: { data?: { socialMedia?: SocialMediaType[]; m
                       <h6>DLA MEDIÓW</h6>
                     </li>
                     {!!data?.menuFooterForMedia?.data?.menu?.items &&
-                      data?.menuFooterForMedia.data?.menu.items.map((item: MenuItemType, index: number) => {
+                      data?.menuFooterForMedia?.data?.menu.items.map((item: MenuItemType, index: number) => {
                         return (
                           <li key={index}>
                             <Link href={item.url}>
