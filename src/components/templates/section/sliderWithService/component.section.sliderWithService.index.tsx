@@ -6,6 +6,7 @@ import Truck from "assets/icon/truck.svg";
 import Tireflat from "assets/icon/tireflat.svg";
 
 import React from "react";
+import { slugFromTitle } from "utils/utils.slug";
 import ReactMarkdown from "react-markdown";
 import { Carousel } from "react-responsive-carousel";
 import Wheelchair from "assets/icon/wheelchair.svg";
@@ -14,6 +15,7 @@ import { Container, Row, Col } from "components/orgamis/flexboxgrid/index.flexbo
 import ComponentList, { ListTypeEnum } from "components/molecules/list/component.list.index";
 
 import { Section, Box, Header, Text, UnitText } from "./component.section.sliderWithService.style";
+import { ButtonLinkIn } from "components/atoms/button/component.button.index";
 
 export default function ComponentSliderWithService({ data }: { data: { slider: Slider | undefined } }) {
   return (
@@ -55,6 +57,11 @@ export default function ComponentSliderWithService({ data }: { data: { slider: S
                       <UnitText>
                         <ReactMarkdown>{item.attributes.quote}</ReactMarkdown>
                       </UnitText>
+                    </Col>
+                    <Col xs={12} className="col">
+                      <ButtonLinkIn title="Więcej" href={`/service/${item.id}/${slugFromTitle(item.attributes.title)}`}>
+                        Więcej
+                      </ButtonLinkIn>
                     </Col>
                   </Row>
                 </Container>

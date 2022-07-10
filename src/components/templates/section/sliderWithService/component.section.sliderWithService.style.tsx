@@ -18,6 +18,17 @@ export const Section = styled.section`
     align-items: center;
     justify-content: center;
     padding-bottom: ${({ theme }: { theme: MainSettingsTemplate }) => theme.break.main};
+
+    a {
+      border: 3px solid white;
+      color: white;
+      font-weight: bold;
+      padding: 1.5rem 5rem;
+
+      &:hover {
+        color: black;
+      }
+    }
   }
 
   .carousel {
