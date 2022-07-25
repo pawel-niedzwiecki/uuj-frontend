@@ -13,7 +13,6 @@ import { Footer, Header, ItemAdress } from "./component.footer.style";
 import { SocialMediaType, MainAddressType, BranchesType, BrancheType } from "database/contact";
 
 const FooterComponent = ({ data }: { data?: { socialMedia?: SocialMediaType[]; mainAddress?: MainAddressType; branches?: BranchesType; description?: string | null; menuFooterUseful?: DisplayMenuType; menuFooterForCustomers?: DisplayMenuType; menuFooterForMedia?: DisplayMenuType } }) => {
-  console.log(data?.branches?.data);
   return (
     <>
       <Footer>

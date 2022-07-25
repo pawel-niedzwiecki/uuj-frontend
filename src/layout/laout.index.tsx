@@ -17,17 +17,14 @@ export default function Laout({
 }) {
   return (
     <>
-      <Script id="google-analytics" strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-W5CKFDFWZN" />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-        
-          gtag('config', 'G-W5CKFDFWZN');
-        `}
-      </Script>
+      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-W5CKFDFWZN" />
+      <Script id="google-analytics" strategy="afterInteractive">{`
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
 
+         gtag('config', 'G-W5CKFDFWZN');
+  `}</Script>
       <Header data={data?.header} />
       {children}
       <Footer data={data?.footer} />
