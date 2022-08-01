@@ -32,7 +32,6 @@ function PageService({
   contact?: DisplayContactType;
   service?: DisplayServiceType;
 }) {
-  console.log(service);
   return (
     <Laout
       data={{
