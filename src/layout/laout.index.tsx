@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Script from "next/script";
 import { DisplayMenuType } from "database/menu";
 import Header from "components/templates/header/index.header";

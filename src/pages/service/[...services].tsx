@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Laout from "layout/laout.index";
 import styled from "styled-components";
 import { slugFromTitle } from "utils/utils.slug";
@@ -33,20 +34,27 @@ function PageService({
   service?: DisplayServiceType;
 }) {
   return (
-    <Laout
-      data={{
-        header: { menu: menuHeader, contact },
-        footer: { socialMedia: contact?.data?.attributes?.social_media, mainAddress: contact?.data?.attributes?.main_address, branches: contact?.data?.attributes?.branches, menuFooterUseful, menuFooterForCustomers, menuFooterForMedia },
-      }}
-    >
-      <Break />
-      <ComponentSectionServiceHeader data={{ title: service?.data.attributes.title, adress: service?.data.attributes.branch, advantages: service?.data.attributes.Advantages }} />
-      <ComponentSectionAboutOurOffice data={{ branch: service?.data.attributes.branch, title: service?.data.attributes.title, about: service?.data.attributes.about_headquarter }} />
-      <ComponentSectionRatingList data={service?.data?.attributes?.ratings} />
-      <ComponentSectionWyWe data={{ title: service?.data.attributes.title, description: service?.data.attributes.why_we, cover: service?.data?.attributes?.why_we_cover }} />
-      <ComponentSectionWhatWeCanForYouMade data={{ city: service?.data.attributes.branch?.data.attributes.city, description: service?.data.attributes.what_we_can_for_you_made, cover: service?.data?.attributes?.what_we_can_for_you_made_cover }} />
-      <ComponentSectionFaq data={service?.data?.attributes?.faqs?.data} />
-    </Laout>
+    <>
+      <Head>
+        <title>{!!service?.data?.attributes?.title ? service?.data.attributes.title : "Usługa"} | UUJ</title>
+        <meta name="description" content={!!service?.data?.attributes?.quote ? service?.data.attributes.quote : "Usługa"} />
+      </Head>
+      <Laout
+        data={{
+          header: { menu: menuHeader, contact },
+          footer: { socialMedia: contact?.data?.attributes?.social_media, mainAddress: contact?.data?.attributes?.main_address, branches: contact?.data?.attributes?.branches, menuFooterUseful, menuFooterForCustomers, menuFooterForMedia },
+        }}
+      >
+        <Break />
+
+        <ComponentSectionServiceHeader data={{ title: service?.data.attributes.title, adress: service?.data.attributes.branch, advantages: service?.data.attributes.Advantages }} />
+        <ComponentSectionAboutOurOffice data={{ branch: service?.data.attributes.branch, title: service?.data.attributes.title, about: service?.data.attributes.about_headquarter }} />
+        <ComponentSectionRatingList data={service?.data?.attributes?.ratings} />
+        <ComponentSectionWyWe data={{ title: service?.data.attributes.title, description: service?.data.attributes.why_we, cover: service?.data?.attributes?.why_we_cover }} />
+        <ComponentSectionWhatWeCanForYouMade data={{ city: service?.data.attributes.branch?.data.attributes.city, description: service?.data.attributes.what_we_can_for_you_made, cover: service?.data?.attributes?.what_we_can_for_you_made_cover }} />
+        <ComponentSectionFaq data={service?.data?.attributes?.faqs?.data} />
+      </Laout>
+    </>
   );
 }
 
